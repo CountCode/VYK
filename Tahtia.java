@@ -1,7 +1,5 @@
 package tahtia;
 
-
-
 public class Tahtia{
 
     static int kutsut;
@@ -24,7 +22,6 @@ private static void  tahtia(int lkm){
     System.out.print(summa.length);
          
 }
-
 
     public static void main(String[] args) {
         // TODO code application logic here
