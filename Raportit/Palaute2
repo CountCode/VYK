@@ -1,0 +1,10 @@
+ 
+Hei,
+
+Lisää ehdottomasti projektisi githubiin, vaikka et olisikaan päässyt ohjelmoinnissa pitkälle. Ohjelma tulee luoda github-kansioosi, jolloin se on automaattisesti versionhallinnan alla. Jos olet luonut projektin jo jonnekkin muualle, niin voit siirtää sen github-kansioosi.
+
+Verkkoja voit generoida monilla eri tavoilla. Voit esimerkiksi luoda itsellesi ison matriisin tai vieruslistan, johon laitat satunnaisesti yhteyksiä. Todennäköisyyksiä muuttamalla voit määrittää kuinka tiheitä tai harvoja verkot ovat. Siis esimerkiksi: asetetaan yhteyden todennäköisyydeksi p = 0.42. Luodaan miljoona nodea x1,...,x1000000. jokaisen xi ja xj välillä arvotaan satunnainen luku n väliltä [0,1]. Jos n < p, niin solmujen xi ja xj välille asetetaan kaari.
+
+Viikkoraporttisi oli hyvin kirjoitettu ja korjasit määrittelydokumentinkin paremmaksi. Koita saada seuraavaksi projektisi githubiin ja aloita koodaaminen.
+
+Mika
