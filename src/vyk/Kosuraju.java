@@ -1,19 +1,16 @@
-/*
+/**
  *  Kosurajun algritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
+ *  @author ilkka
+ *  @version 0.2
  * 
  */
 package vyk;
 import java.util.LinkedList;
 
-/**
- *
- * @author ilkka
- * @version 0.2
- */
 public class Kosuraju {
     
     // Tira luentokalvot s. 499
-    // {0,1,5},{3},{4,8},{6,7}
+    // {0,1,4},{2},{3,7},{5,6}
   static int[][] esim1 = new int[][] {
         {0, 0, 0, 0, 1, 0, 0, 0},
         {1, 0, 0, 0, 0, 0, 0, 0},
@@ -25,25 +22,26 @@ public class Kosuraju {
         {0, 0, 0, 1, 0, 0, 1, 0}};
     
    public static int[] color;
-   public static int[] alku;
-   public static int[] loppu;
-   public static int aika;
+ //  public static int[] alku;
+ //  public static int[] loppu;
+ //  public static int aika;
+   public static LinkedList pino;
     
     /**
-     * Alustus -   Alustaa apumuuttujat verkon läpikäyntiä varten ja käynnistää
-     *             läpikäynnin 
-     * @param verkko  Käsiteltävä verkko
-     * @param solmu  Alkusolmu 
+     * - Alustaa apumuuttujat verkon ensimmäistä läpikäyntiä varten
+     * - Käynnistää läpikäynnin
+     * - Valitsee uudet solmut numerojärjestyksessä
+     * @param verkko  Käsiteltävä verkko 
      */
     
-    public static void Alustus(int[][] verkko, int alkusolmu){
+    public static void Alustus1(int[][] verkko){
         
-        System.out.println("Alustus");
+        System.out.println("Alustus 1");
 
         for (int u=0; u< verkko.length; u++){ // Jokaiselle solmulle u e V
             color[u]=-1;        // -1 = valkoinen
          } // for
-        aika = 0;
+  //      aika = 0;
         
         for (int u=0; u<verkko.length; u++){ // Jokaiselle solmulle u e V
             if (color[u]==-1){
@@ -53,8 +51,38 @@ public class Kosuraju {
     }
     
     /**
-     * SSE - Syvyys Suuntainen Etsintä - Käy verkon läpi ja ottaa talteen
-     *          solmusta poistumisajan
+     * - Alustaa apumuuttujat verkon toista läpikäyntiä varten
+     * - Käynnistää läpikäynnin.
+     * - Valitsee uudet solmut pinosta
+     * @param verkko  Käsiteltävä verkko
+     */
+    
+    public static void Alustus2(int[][] verkko){
+        
+        System.out.println("Alustus 2");
+
+        for (int u=0; u< verkko.length; u++){ // Jokaiselle solmulle u e V
+            color[u]=-1;        // -1 = valkoinen
+         } // for
+    //    aika = 0;
+        
+        int solmu;
+        while (!pino.isEmpty()){
+            solmu=(Integer)pino.pop();
+             if (color[solmu]==-1){
+                    SSE(verkko, solmu);
+                    System.out.println();
+            } // if
+             else {
+                 System.out.print(solmu+" ");
+             } // else
+        } // while
+    }
+    
+    /**
+     * Syvyys Suuntainen Etsintä 
+     * - Käy verkon läpi 
+     * - Ottaa talteen solmusta poistumisajan
      * @param verkko  Käsiteltävä verkko
      * @param solmu  Käsiteltävä solmu
      */
@@ -62,10 +90,10 @@ public class Kosuraju {
         
         System.out.println("SSE");        
         
-        color[solmu]=0;             // 0 = harmaa
-        aika=aika+1;
+        color[solmu]=0;                         // 0 = harmaa
+   //     aika=aika+1;
         System.out.println("solmu: "+solmu);
-        alku[solmu]=aika;
+   //     alku[solmu]=aika;
        
         for (int v=0; v<verkko.length; v++){           // jokaiselle solmulle 
            // System.out.println("v: "+v);
@@ -73,23 +101,24 @@ public class Kosuraju {
                 SSE(verkko, v);
             } // if
         } //for
-        color[solmu]=1;                 // 1 = musta
-        aika=aika+1;
-        loppu[solmu]=aika;
+        color[solmu]=1;                         // 1 = musta
+  //      aika=aika+1;
+  //      loppu[solmu]=aika;
+        pino.push(solmu);                       // Käsitellyt solmut pinoon
     }
     
     /**
-     * Transpoosi - Käänttää kaarien suunnat vastakkaisiksi
+     * - Kääntää kaarien suunnat vastakkaisiksi
      * @param verkko  Käsiteltävä verkko
      */
     public static int[][] Transpoosi(int[][] verkko){
         
-        System.out.println("transpoosi");        
+        System.out.println("Transpoosi");        
         
         int[][] transpoosi = new int[verkko.length][verkko.length];
         for (int i=0; i<verkko.length; i++){
             for (int j=0; j<verkko.length; j++){
-                transpoosi[j][i]=verkko[j][i];   // käännetään matriisi
+                transpoosi[j][i]=verkko[i][j];   // käännetään matriisi
             } // for j
         } // for i
         return transpoosi;
@@ -97,22 +126,21 @@ public class Kosuraju {
     
     
     /**
-     * Kosuraju - Kosuraju-algorimin aloitusmetodi
+     * - Kosuraju-algorimin aloitusmetodi
      */
     
     public static void Kosuraju(){
   // public static void main(String[] args){ 
         System.out.println("Kosuraju");
         int[][] verkko = esim1;
-        alku = new int[verkko.length];
-        loppu = new int[verkko.length];
-        LinkedList pino = new LinkedList();
+      //  alku = new int[verkko.length];
+      //  loppu = new int[verkko.length];
+        pino = new LinkedList();
         
         color = new int[verkko.length];
-        Alustus(verkko,0);
+        Alustus1(verkko);
         // Solmut pinoon lopun mukaan alenevassa järjestyksessä
-        Alustus(Transpoosi(verkko),0);
+        Alustus2(Transpoosi(verkko));
             
-    }
-    
+    }   
 }
