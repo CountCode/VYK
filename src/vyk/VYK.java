@@ -23,7 +23,7 @@ public class VYK {
      
      
     // Corman s. 615
-    // {0,1,4},{2},{3,7},{5,6}
+    // {0,1,4},{2,3},{5,6},{7}
      static int[][] esim2 = new int[][] {
         {0, 1, 0, 0, 0, 0, 0, 0},
         {0, 0, 1, 0, 1, 0, 0, 0},
@@ -35,6 +35,19 @@ public class VYK {
         {0, 0, 0, 0, 0, 0, 0, 1}};     
      
     
+    // http://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_alorithm
+    // {0,1,4},{2,3},{5,6},{7}
+     static int[][] esim3 = new int[][] {
+        {0, 0, 0, 0, 1, 0, 0, 0},
+        {1, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 1, 0, 0, 0, 0},
+        {0, 0, 1, 0, 0, 0, 0, 0},
+        {0, 1, 0, 0, 0, 0, 0, 0},
+        {0, 1, 0, 0, 0, 0, 1, 0},
+        {0, 0, 1, 0, 0, 1, 0, 0},
+        {0, 0, 0, 1, 0, 0, 1, 1}};     
+     
+     
 
     /**
      * @param args the command line arguments

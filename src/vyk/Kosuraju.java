@@ -1,11 +1,12 @@
 /**
- *  Kosurajun algritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
+ *  Kosarajun algritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
  *  @author ilkka
  *  @version 0.2
  * 
  */
 package vyk;
 import java.util.LinkedList;
+import java.util.TreeSet;
 
 public class Kosuraju {
     
@@ -26,6 +27,7 @@ public class Kosuraju {
  //  public static int[] loppu;
  //  public static int aika;
    public static LinkedList pino;
+   public static TreeSet komponentti;
     
     /**
      * - Alustaa apumuuttujat verkon ensimmäistä läpikäyntiä varten
@@ -36,7 +38,7 @@ public class Kosuraju {
     
     public static void Alustus1(int[][] verkko){
         
-        System.out.println("Alustus 1");
+    //    System.out.println("Alustus 1");
 
         for (int u=0; u< verkko.length; u++){ // Jokaiselle solmulle u e V
             color[u]=-1;        // -1 = valkoinen
@@ -59,7 +61,7 @@ public class Kosuraju {
     
     public static void Alustus2(int[][] verkko){
         
-        System.out.println("Alustus 2");
+       // System.out.println("Alustus 2");
 
         for (int u=0; u< verkko.length; u++){ // Jokaiselle solmulle u e V
             color[u]=-1;        // -1 = valkoinen
@@ -71,12 +73,25 @@ public class Kosuraju {
             solmu=(Integer)pino.pop();
              if (color[solmu]==-1){
                     SSE(verkko, solmu);
-                    System.out.println();
+                    Komponentti();
             } // if
              else {
-                 System.out.print(solmu+" ");
+                // System.out.print(solmu+" ");
+                 komponentti.add(solmu);
              } // else
         } // while
+        Komponentti();
+    }
+    
+    /**
+     *  Tulostaa Vahvasti yhtenäisen komponentin.
+     */
+    
+    public static void Komponentti(){
+        while (!komponentti.isEmpty()){
+            System.out.print(komponentti.pollFirst()+" ");
+        } // while
+        System.out.println();   
     }
     
     /**
@@ -88,11 +103,11 @@ public class Kosuraju {
      */
     public static void SSE(int[][] verkko, int solmu){
         
-        System.out.println("SSE");        
+    //    System.out.println("SSE");        
         
         color[solmu]=0;                         // 0 = harmaa
    //     aika=aika+1;
-        System.out.println("solmu: "+solmu);
+ //       System.out.println("solmu: "+solmu);
    //     alku[solmu]=aika;
        
         for (int v=0; v<verkko.length; v++){           // jokaiselle solmulle 
@@ -113,7 +128,7 @@ public class Kosuraju {
      */
     public static int[][] Transpoosi(int[][] verkko){
         
-        System.out.println("Transpoosi");        
+   //     System.out.println("Transpoosi");        
         
         int[][] transpoosi = new int[verkko.length][verkko.length];
         for (int i=0; i<verkko.length; i++){
@@ -136,6 +151,7 @@ public class Kosuraju {
       //  alku = new int[verkko.length];
       //  loppu = new int[verkko.length];
         pino = new LinkedList();
+        komponentti = new TreeSet();
         
         color = new int[verkko.length];
         Alustus1(verkko);
