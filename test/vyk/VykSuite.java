@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
  * @author ilkka
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({vyk.PathBasedTest.class, vyk.VYKTest.class, vyk.TarjanTest.class, vyk.KosurajuTest.class})
+@Suite.SuiteClasses({PathBasedTest.class, VYKTest.class, TarjanTest.class, KosarajuTest.class})
 public class VykSuite {
 
     @BeforeClass

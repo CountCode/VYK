@@ -41,4 +41,51 @@ public class TarjanTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of Alustus method, of class Tarjan.
+     */
+    @Test
+    public void testAlustus() {
+        System.out.println("Alustus");
+        int[][] verkko = null;
+        Tarjan.Alustus(verkko);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of SSE method, of class Tarjan.
+     */
+    @Test
+    public void testSSE() {
+        System.out.println("SSE");
+        int[][] verkko = null;
+        int solmu = 0;
+        Tarjan.SSE(verkko, solmu);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of Komponentti method, of class Tarjan.
+     */
+    @Test
+    public void testKomponentti() {
+        System.out.println("Komponentti");
+        Tarjan.Komponentti();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of Tarjan method, of class Tarjan.
+     */
+    @Test
+    public void testTarjan() {
+        System.out.println("Tarjan");
+        Tarjan.Tarjan();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 }

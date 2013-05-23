@@ -6,6 +6,7 @@ package vyk;
 /**
  *
  * @author ilkka
+ * @version 0.3
  */
 public class VYK {
     
@@ -54,8 +55,10 @@ public class VYK {
      */
     public static void main(String[] args) {
         
-        Kosuraju kosu = new Kosuraju();
+      //  Kosaraju kosa = new Kosaraju();
         System.out.println("VYK");
-        Kosuraju.Kosuraju();
+        Kosaraju.Kosaraju();    
+        
+        Tarjan.Tarjan();
     }
 }

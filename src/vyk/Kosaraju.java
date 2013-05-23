@@ -1,14 +1,16 @@
-/**
- *  Kosarajun algritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
- *  @author ilkka
- *  @version 0.2
- * 
- */
 package vyk;
 import java.util.LinkedList;
 import java.util.TreeSet;
 
-public class Kosuraju {
+/**
+ *  Kosarajun algritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
+ *  @author ilkka
+ *  @version 0.3
+ * 
+ */
+
+
+public class Kosaraju {
     
     // Tira luentokalvot s. 499
     // {0,1,4},{2},{3,7},{5,6}
@@ -21,12 +23,20 @@ public class Kosuraju {
         {0, 1, 0, 0, 1, 0, 1, 0},
         {0, 0, 0, 0, 0, 1, 0, 0},
         {0, 0, 0, 1, 0, 0, 1, 0}};
-    
+  /**
+   * Pitää kirjaa käydyistä solmuista
+   */  
    public static int[] color;
  //  public static int[] alku;
  //  public static int[] loppu;
  //  public static int aika;
+   /**
+    * Kerää talteen käydyt solmut
+    */
    public static LinkedList pino;
+   /**
+    * kerää yhteen komponentin solmut
+    */
    public static TreeSet komponentti;
     
     /**
@@ -125,6 +135,7 @@ public class Kosuraju {
     /**
      * - Kääntää kaarien suunnat vastakkaisiksi
      * @param verkko  Käsiteltävä verkko
+     * @return palautaa käännetyn matriisin
      */
     public static int[][] Transpoosi(int[][] verkko){
         
@@ -141,10 +152,10 @@ public class Kosuraju {
     
     
     /**
-     * - Kosuraju-algorimin aloitusmetodi
+     * - Kosaraju-algorimin aloitusmetodi
      */
     
-    public static void Kosuraju(){
+    public static void Kosaraju(){
   // public static void main(String[] args){ 
         System.out.println("Kosuraju");
         int[][] verkko = esim1;
