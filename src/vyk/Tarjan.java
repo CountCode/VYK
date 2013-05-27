@@ -8,7 +8,7 @@ import java.util.TreeSet;
  * - Verkon vahvasti yhtenäisten komponenttien löytämseksi
  * 
  * @author ilkka
- * @version 0.3
+ * @version 0.31
  */
 public class Tarjan {
     /**
@@ -79,7 +79,7 @@ public class Tarjan {
      */    
     public static void SSE(int[][] verkko, int solmu){
   
-        System.out.println("SSE:"+solmu+"aika:"+aika);
+    //    System.out.println("SSE:"+solmu+"aika:"+aika);
    
         color[solmu]=0; 
         syvyys[solmu]=aika;                     // solmun syvyys
@@ -90,9 +90,11 @@ public class Tarjan {
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){ // if q is not already in T ??
                                             // add p->q to T ??
                 SSE(verkko, kaari);                 // seuraavaan solmuun
+         //       System.out.println(solmu+" "+alin[solmu]+":"+kaari+" "+alin[kaari]);
                 alin[solmu]=Math.min(alin[solmu],alin[kaari]); // jos komponentista löytynyt alempi solmu
             } // if
-            else if (pino.contains(kaari)){         // Jos kaari on pinossa
+            else if (verkko[solmu][kaari]==1 && pino.contains(kaari)){         // Jos kaari on pinossa
+         //       System.out.println("E"+solmu+" "+alin[solmu]+":"+kaari+" "+syvyys[kaari]);                
             alin[solmu]=Math.min(alin[solmu],syvyys[kaari]); // jos kaari on alempana
             } // else if
         } // for
@@ -107,7 +109,8 @@ public class Tarjan {
             while (valmis){                      // repeat
         //        System.out.println("lisää");   // komponentin solmut yhteen
                 w=(Integer)pino.pop();
-                System.out.println(w+":"+solmu);
+            //    System.out.println(w+":"+solmu);
+            //    System.out.println(alin[2]+":"+alin[5]+":"+alin[6]);
                 komponentti.add(w);
                 if (solmu==w){
                     valmis=false;
