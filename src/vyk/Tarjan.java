@@ -98,9 +98,6 @@ public class Tarjan {
             alin[solmu]=Math.min(alin[solmu],syvyys[kaari]); // jos kaari on alempana
             } // else if
         } // for
-    
-        // BUGI BUGI 
-        
         
         if (alin[solmu]==syvyys[solmu]){         // jos olemme alimmassa solmussa
       //      System.out.println("Komponentti:");  // output "component:"
@@ -133,11 +130,11 @@ public class Tarjan {
     /**
      * - Algoritmin käynnistysmetodi
      */
-    public static void Tarjan(){
+    public static void Tarjan(int[][] verkko){
 
     System.out.println("Tarjan");
     // Alustus
-    int[][] verkko = esim1;
+   // int[][] verkko = esim1;
     color = new int[verkko.length];
     syvyys = new int[verkko.length];
     alin= new int[verkko.length];

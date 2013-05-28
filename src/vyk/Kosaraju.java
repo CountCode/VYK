@@ -155,10 +155,10 @@ public class Kosaraju {
      * - Kosaraju-algorimin aloitusmetodi
      */
     
-    public static void Kosaraju(){
+    public static void Kosaraju(int[][] verkko){
   // public static void main(String[] args){ 
         System.out.println("Kosuraju");
-        int[][] verkko = esim1;
+     //   int[][] verkko = esim1;
       //  alku = new int[verkko.length];
       //  loppu = new int[verkko.length];
         pino = new LinkedList();

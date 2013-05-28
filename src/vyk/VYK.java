@@ -49,6 +49,14 @@ public class VYK {
         {0, 0, 0, 1, 0, 0, 1, 1}};     
      
      
+     /**
+      * Generoidaan suunnattu verkko
+      * @param solmuja verkon solmujen määrä
+      * @param tiheys verkon tiheys [0..1]
+      * 0 ei yhtään kaarta, 1 kaikkien solmujen välissä kaari
+      * @return -generoitu verkko
+      */
+     
      public static int[][] verkkoja(int solmuja, double tiheys){
          
          int[][] verkko= new int[solmuja][solmuja];
@@ -60,7 +68,7 @@ public class VYK {
                  } else {
                      verkko[i][j]=0;
                  } // if {} else{}
-                 System.out.println(verkko[i][j]);
+          //       System.out.println(verkko[i][j]);
              } // for j
          } // for i
          
@@ -73,12 +81,19 @@ public class VYK {
      */
     public static void main(String[] args) {
         
-        verkkoja(16, 0.4);
+    //    int[][] verkko = verkkoja(32, 0.07);
         
       //  Kosaraju kosa = new Kosaraju();
         System.out.println("VYK");
-        Kosaraju.Kosaraju();    
+    //    Kosaraju.Kosaraju(esim1);    
+        Kosaraju.Kosaraju(esim2);   // Bugi: solmu 3 kahdessa komponentissa 
+                                    // ei kuulu 5 ja 6 samaan komponenttiin.
+    //    Kosaraju.Kosaraju(esim3);
+    //    Kosaraju.Kosaraju(verkko);        
         
-        Tarjan.Tarjan();
+    //    Tarjan.Tarjan(esim1);
+        Tarjan.Tarjan(esim2);
+    //    Tarjan.Tarjan(esim3);        
+    //    Tarjan.Tarjan(verkko);        
     }
 }
