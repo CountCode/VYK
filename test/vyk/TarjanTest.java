@@ -84,7 +84,8 @@ public class TarjanTest {
     @Test
     public void testTarjan() {
         System.out.println("Tarjan");
-        Tarjan.Tarjan();
+        int[][] verkko = null;        
+        Tarjan.Tarjan(verkko);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

@@ -41,4 +41,52 @@ public class PathBasedTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of Alustus method, of class PathBased.
+     */
+    @Test
+    public void testAlustus() {
+        System.out.println("Alustus");
+        int[][] verkko = null;
+        PathBased.Alustus(verkko);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of SSE method, of class PathBased.
+     */
+    @Test
+    public void testSSE() {
+        System.out.println("SSE");
+        int[][] verkko = null;
+        int solmu = 0;
+        PathBased.SSE(verkko, solmu);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of Komponentti method, of class PathBased.
+     */
+    @Test
+    public void testKomponentti() {
+        System.out.println("Komponentti");
+        PathBased.Komponentti();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of PathBased method, of class PathBased.
+     */
+    @Test
+    public void testPathBased() {
+        System.out.println("PathBased");
+        int[][] verkko = null;
+        PathBased.PathBased(verkko);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 }

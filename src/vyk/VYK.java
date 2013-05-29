@@ -1,17 +1,17 @@
-/*
- * 
- */
 package vyk;
 
 /**
  *
  * @author ilkka
- * @version 0.31
+ * @version 0.4
  */
 public class VYK {
     
-    // Tira luentokalvot s. 499
-    // {0,1,4},{2},{3,7},{5,6}
+   /** 
+   * Tira luentokalvot s. 499
+   * Komponentit:
+   * {0,1,4},{2},{3,7},{5,6}
+   * /
      static int[][] esim1 = new int[][] {
         {0, 0, 0, 0, 1, 0, 0, 0},
         {1, 0, 0, 0, 0, 0, 0, 0},
@@ -23,8 +23,11 @@ public class VYK {
         {0, 0, 0, 1, 0, 0, 1, 0}};
      
      
-    // Corman s. 615
-    // {0,1,4},{2,3},{5,6},{7}
+    /** 
+    * Corman s. 615
+    * Komponentit:
+    * {0,1,4},{2,3},{5,6},{7}
+    * /
      static int[][] esim2 = new int[][] {
         {0, 1, 0, 0, 0, 0, 0, 0},
         {0, 0, 1, 0, 1, 0, 0, 0},
@@ -36,8 +39,11 @@ public class VYK {
         {0, 0, 0, 0, 0, 0, 0, 1}};     
      
     
-    // http://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_alorithm
-    // {0,1,4},{2,3},{5,6},{7}
+    /** 
+    * http://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_alorithm
+    * Komponentit:
+    * {0,1,4},{2,3},{5,6},{7}
+    * /
      static int[][] esim3 = new int[][] {
         {0, 0, 0, 0, 1, 0, 0, 0},
         {1, 0, 0, 0, 0, 0, 0, 0},
@@ -46,11 +52,26 @@ public class VYK {
         {0, 1, 0, 0, 0, 0, 0, 0},
         {0, 1, 0, 0, 0, 0, 1, 0},
         {0, 0, 1, 0, 0, 1, 0, 0},
-        {0, 0, 0, 1, 0, 0, 1, 1}};     
+        {0, 0, 0, 1, 0, 0, 1, 1}};
+     
+    /** 
+    *  Yksi lenkki
+    *  Komponentit:
+    *  {0,1,2,3,4,5,6,7}
+    * /
+     static int[][] esim4 = new int[][] {
+        {0, 1, 0, 0, 0, 0, 0, 0},
+        {0, 0, 1, 0, 0, 0, 0, 0},
+        {0, 0, 0, 1, 0, 0, 0, 0},
+        {0, 0, 0, 0, 1, 0, 0, 0},
+        {0, 0, 0, 0, 0, 1, 0, 0},
+        {0, 0, 0, 0, 0, 0, 1, 0},
+        {0, 0, 0, 0, 0, 0, 0, 1},
+        {1, 0, 0, 0, 0, 0, 0, 0}};   
      
      
      /**
-      * Generoidaan suunnattu verkko
+      * Generoidaan satunnainen suunnattu verkko
       * @param solmuja verkon solmujen määrä
       * @param tiheys verkon tiheys [0..1]
       * 0 ei yhtään kaarta, 1 kaikkien solmujen välissä kaari

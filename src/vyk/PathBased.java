@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.TreeSet;
 
 /**
- *
+ * PathBased-algoritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
  * @author ilkka
- * @version 0.31
+ * @version 0.4
  */
 public class PathBased {
     
@@ -39,8 +39,12 @@ public class PathBased {
      */
     public static TreeSet komponentti;
     
-    // Tira luentokalvot s. 499
-    // {0,1,4},{2},{3,7},{5,6}
+   /**
+     * Vierusmatriisi testausta varten
+     * Tira luentokalvot s. 499
+     * Komponentit:
+     * {0,1,4},{2},{3,7},{5,6}
+     */ 
     static int[][] esim1 = new int[][] {
         {0, 0, 0, 0, 1, 0, 0, 0},
         {1, 0, 0, 0, 0, 0, 0, 0},
@@ -76,7 +80,7 @@ public class PathBased {
     
     /**
      * - Syvyys Suuntainen Etsintä
-     * - Etsii vahvasti yhtenäiset komponentit
+     * - Etsii verkon vahvasti yhtenäiset komponentit
      * @param verkko
      * @param solmu 
      */    
@@ -98,27 +102,15 @@ public class PathBased {
            //     System.out.println("SSE-:"+solmu);
             } // if
             else if (verkko[solmu][kaari]==1 && pinoS.contains(kaari)){         // Jos kaari on pinossa
-                
-           while (syvyys[(Integer)pinoP.peek()]>syvyys[kaari]){
-               pinoP.pop();
-                //  System.out.println("PP"+pinoP.pop());              
-           }     
-                
-                
-           /*     
-                 do {
-                 pinosta=(Integer)pinoP.pop();
-                 System.out.println("PP"+pinosta);
-                         } while (syvyys[kaari]>syvyys[pinosta]); */
-            } // else if
-   
-            
+                while (syvyys[(Integer)pinoP.peek()]>syvyys[kaari]){
+                    pinoP.pop();            
+                }     
+            } // else if            
         } // for
                 
         if (solmu==pinoP.peek()){
             do { 
                 pinosta=(Integer)pinoS.pop();
-      //          System.out.println("PS"+pinosta);
                 komponentti.add(pinosta);
             } while (solmu!=pinosta);
            // komponentti.add(pinosta); 
@@ -146,7 +138,6 @@ public class PathBased {
 
     System.out.println("PathBased");
     // Alustus
-  //  int[][] verkko = esim1;
     color = new int[verkko.length];
     syvyys = new int[verkko.length];
     alin= new int[verkko.length];

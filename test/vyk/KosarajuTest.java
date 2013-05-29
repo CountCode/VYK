@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package vyk;
 
 import org.junit.After;
@@ -104,7 +100,8 @@ public class KosarajuTest {
     @Test
     public void testKosaraju() {
         System.out.println("Kosaraju");
-        Kosaraju.Kosaraju();
+        int[][] verkko = null;        
+        Kosaraju.Kosaraju(verkko);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

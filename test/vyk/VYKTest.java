@@ -47,4 +47,31 @@ public class VYKTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of verkkoja method, of class VYK.
+     */
+    @Test
+    public void testVerkkoja() {
+        System.out.println("verkkoja");
+        int solmuja = 0;
+        double tiheys = 0.0;
+        int[][] expResult = null;
+        int[][] result = VYK.verkkoja(solmuja, tiheys);
+        assertArrayEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of tulostaVerkko method, of class VYK.
+     */
+    @Test
+    public void testTulostaVerkko() {
+        System.out.println("tulostaVerkko");
+        int[][] verkko = null;
+        VYK.tulostaVerkko(verkko);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 }

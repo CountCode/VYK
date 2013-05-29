@@ -5,10 +5,10 @@ import java.util.TreeSet;
 
 /**
  *  Tarjan algoritmi 
- * - Verkon vahvasti yhtenäisten komponenttien löytämseksi
+ * - Verkon vahvasti yhtenäisten komponenttien löytämiseksi
  * 
  * @author ilkka
- * @version 0.31
+ * @version 0.4
  */
 public class Tarjan {
     /**
@@ -36,8 +36,12 @@ public class Tarjan {
      */
     public static TreeSet komponentti;
     
-    // Tira luentokalvot s. 499
-    // {0,1,4},{2},{3,7},{5,6}
+   /**
+     * Vierusmatriisi testausta varten
+     * Tira luentokalvot s. 499
+     * Komponentit:
+     * {0,1,4},{2},{3,7},{5,6}
+     */ 
     static int[][] esim1 = new int[][] {
         {0, 0, 0, 0, 1, 0, 0, 0},
         {1, 0, 0, 0, 0, 0, 0, 0},
@@ -73,7 +77,7 @@ public class Tarjan {
     
     /**
      * - Syvyys Suuntainen Etsintä
-     * - Etsii vahvasti yhtenäiset komponentit
+     * - Etsii verkon vahvasti yhtenäiset komponentit
      * @param verkko
      * @param solmu 
      */    
@@ -90,11 +94,9 @@ public class Tarjan {
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){ // if q is not already in T ??
                                             // add p->q to T ??
                 SSE(verkko, kaari);                 // seuraavaan solmuun
-         //       System.out.println(solmu+" "+alin[solmu]+":"+kaari+" "+alin[kaari]);
                 alin[solmu]=Math.min(alin[solmu],alin[kaari]); // jos komponentista löytynyt alempi solmu
             } // if
-            else if (verkko[solmu][kaari]==1 && pino.contains(kaari)){         // Jos kaari on pinossa
-         //       System.out.println("E"+solmu+" "+alin[solmu]+":"+kaari+" "+syvyys[kaari]);                
+            else if (verkko[solmu][kaari]==1 && pino.contains(kaari)){         // Jos kaari on pinossa              
             alin[solmu]=Math.min(alin[solmu],syvyys[kaari]); // jos kaari on alempana
             } // else if
         } // for
@@ -104,10 +106,7 @@ public class Tarjan {
             boolean valmis=true;
             int w;
             while (valmis){                      // repeat
-        //        System.out.println("lisää");   // komponentin solmut yhteen
                 w=(Integer)pino.pop();
-            //    System.out.println(w+":"+solmu);
-            //    System.out.println(alin[2]+":"+alin[5]+":"+alin[6]);
                 komponentti.add(w);
                 if (solmu==w){
                     valmis=false;
@@ -135,7 +134,6 @@ public class Tarjan {
 
     System.out.println("Tarjan");
     // Alustus
-   // int[][] verkko = esim1;
     color = new int[verkko.length];
     syvyys = new int[verkko.length];
     alin= new int[verkko.length];
