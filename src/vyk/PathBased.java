@@ -21,7 +21,11 @@ public class PathBased {
     /**
      * Kerää talteen käydyt solmut
      */
-    public static LinkedList pino;
+    public static LinkedList pinoS;
+    /**
+     * Kerää talteen käydyt solmut
+     */
+    public static LinkedList pinoP;      
     /**
      * Kirjaa haun syvyyden
      */
@@ -78,45 +82,50 @@ public class PathBased {
      */    
     public static void SSE(int[][] verkko, int solmu){
   
-    //    System.out.println("SSE:"+solmu+"aika:"+aika);
+    //    System.out.println("SSE:"+solmu+" aika:"+aika);
+        int pinosta;
    
         color[solmu]=0; 
         syvyys[solmu]=aika;                     // solmun syvyys
         alin[solmu]=aika;                       // solmun komponentin alin
         aika=aika+1;                            // lisää syvyyttä
-        pino.push(solmu);                        // pinoon     
+        pinoS.push(solmu);                        // pinoon C
+        pinoP.push(solmu);                        // pinoon  P       
         for (int kaari=0;kaari<verkko.length;kaari++){      // joka kaarelle
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){ // if q is not already in T ??
                                             // add p->q to T ??
                 SSE(verkko, kaari);                 // seuraavaan solmuun
-         //       System.out.println(solmu+" "+alin[solmu]+":"+kaari+" "+alin[kaari]);
-                alin[solmu]=Math.min(alin[solmu],alin[kaari]); // jos komponentista löytynyt alempi solmu
+           //     System.out.println("SSE-:"+solmu);
             } // if
-            else if (verkko[solmu][kaari]==1 && pino.contains(kaari)){         // Jos kaari on pinossa
-         //       System.out.println("E"+solmu+" "+alin[solmu]+":"+kaari+" "+syvyys[kaari]);                
-            alin[solmu]=Math.min(alin[solmu],syvyys[kaari]); // jos kaari on alempana
+            else if (verkko[solmu][kaari]==1 && pinoS.contains(kaari)){         // Jos kaari on pinossa
+                
+           while (syvyys[(Integer)pinoP.peek()]>syvyys[kaari]){
+               pinoP.pop();
+                //  System.out.println("PP"+pinoP.pop());              
+           }     
+                
+                
+           /*     
+                 do {
+                 pinosta=(Integer)pinoP.pop();
+                 System.out.println("PP"+pinosta);
+                         } while (syvyys[kaari]>syvyys[pinosta]); */
             } // else if
+   
+            
         } // for
-    
-        // BUGI BUGI 
-        
-        
-        if (alin[solmu]==syvyys[solmu]){         // jos olemme alimmassa solmussa
-      //      System.out.println("Komponentti:");  // output "component:"
-            boolean valmis=true;
-            int w;
-            while (valmis){                      // repeat
-        //        System.out.println("lisää");   // komponentin solmut yhteen
-                w=(Integer)pino.pop();
-            //    System.out.println(w+":"+solmu);
-            //    System.out.println(alin[2]+":"+alin[5]+":"+alin[6]);
-                komponentti.add(w);
-                if (solmu==w){
-                    valmis=false;
-                } // if
-            } // while
-            Komponentti();                      // tulostetaan komponetin solmut
-        } //if               
+                
+        if (solmu==pinoP.peek()){
+            do { 
+                pinosta=(Integer)pinoS.pop();
+      //          System.out.println("PS"+pinosta);
+                komponentti.add(pinosta);
+            } while (solmu!=pinosta);
+           // komponentti.add(pinosta); 
+            pinoP.pop();
+           Komponentti();   // tulostetaan komponetin solmut
+        }   
+                         
     }  
     
      /**
@@ -131,16 +140,18 @@ public class PathBased {
     
     /**
      * - Algoritmin käynnistysmetodi
+     * @param verkko 
      */
-    public static void PathBased(){
+    public static void PathBased(int[][] verkko){
 
-    System.out.println("Tarjan");
+    System.out.println("PathBased");
     // Alustus
-    int[][] verkko = esim1;
+  //  int[][] verkko = esim1;
     color = new int[verkko.length];
     syvyys = new int[verkko.length];
     alin= new int[verkko.length];
-    pino = new LinkedList();
+    pinoS = new LinkedList();
+    pinoP = new LinkedList();    
     komponentti = new TreeSet();    
 
     Alustus(verkko);        // Aloitetaan etsintä

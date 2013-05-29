@@ -57,7 +57,7 @@ public class Tarjan {
     
         public static void Alustus(int[][] verkko){
         
-        System.out.println("Alustus");
+      //  System.out.println("Alustus");
 
         for (int u=0; u< verkko.length; u++){ // Jokaiselle solmulle u e V
             color[u]=-1;        // -1 = valkoinen
@@ -129,6 +129,7 @@ public class Tarjan {
     
     /**
      * - Algoritmin käynnistysmetodi
+     * @param verkko
      */
     public static void Tarjan(int[][] verkko){
 

@@ -6,12 +6,12 @@ package vyk;
 /**
  *
  * @author ilkka
- * @version 0.3
+ * @version 0.31
  */
 public class VYK {
     
     // Tira luentokalvot s. 499
-    // {0,1,5},{3},{4,8},{6,7}
+    // {0,1,4},{2},{3,7},{5,6}
      static int[][] esim1 = new int[][] {
         {0, 0, 0, 0, 1, 0, 0, 0},
         {1, 0, 0, 0, 0, 0, 0, 0},
@@ -70,10 +70,22 @@ public class VYK {
                  } // if {} else{}
           //       System.out.println(verkko[i][j]);
              } // for j
-         } // for i
-         
-         
+         } // for i        
          return verkko;
+     }
+     /**
+      * Tulostaa annetun vierusmatriisin
+      * @param verkko 
+      */     
+          public static void tulostaVerkko(int[][] verkko){
+        
+         
+         for (int i=0; i<verkko.length; i++){
+             for (int j=0; j<verkko[0].length; j++){
+                 System.out.print(verkko[i][j]);
+             } // for j
+             System.out.println();
+         } // for i        
      }
 
     /**
@@ -81,19 +93,24 @@ public class VYK {
      */
     public static void main(String[] args) {
         
-    //    int[][] verkko = verkkoja(32, 0.07);
+        int[][] verkko = verkkoja(12, 0.14);
+      //  tulostaVerkko(verkko);
         
       //  Kosaraju kosa = new Kosaraju();
-        System.out.println("VYK");
+   //     System.out.println("VYK");
     //    Kosaraju.Kosaraju(esim1);    
-        Kosaraju.Kosaraju(esim2);   // Bugi: solmu 3 kahdessa komponentissa 
-                                    // ei kuulu 5 ja 6 samaan komponenttiin.
+  //      Kosaraju.Kosaraju(esim2);  
     //    Kosaraju.Kosaraju(esim3);
-    //    Kosaraju.Kosaraju(verkko);        
+     //   Kosaraju.Kosaraju(verkko);        
         
     //    Tarjan.Tarjan(esim1);
-        Tarjan.Tarjan(esim2);
-    //    Tarjan.Tarjan(esim3);        
-    //    Tarjan.Tarjan(verkko);        
+    //    Tarjan.Tarjan(esim2);
+   //     Tarjan.Tarjan(esim3);        
+        Tarjan.Tarjan(verkko);     
+        
+     //   PathBased.PathBased(esim1);
+    //    PathBased.PathBased(esim2);
+   //     PathBased.PathBased(esim3);        
+        PathBased.PathBased(verkko);       
     }
 }

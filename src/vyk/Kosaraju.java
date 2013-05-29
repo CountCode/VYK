@@ -79,15 +79,20 @@ public class Kosaraju {
     //    aika = 0;
         
         int solmu;
-        while (!pino.isEmpty()){
+        while (!pino.isEmpty()){                // pinossa solmuja
             solmu=(Integer)pino.pop();
-             if (color[solmu]==-1){
+       //     System.out.println("ps:"+solmu);   
+             if (color[solmu]==-1){             // solmussa ei ole vielä käyty
                     SSE(verkko, solmu);
                     Komponentti();
             } // if
-             else {
-                // System.out.print(solmu+" ");
-                 komponentti.add(solmu);
+             else {                             // solmussa on jo käyty
+           //      System.out.print(solmu+" ");
+                 if (color[solmu]==0){
+                     komponentti.add(solmu);
+                     color[solmu]=1;            // 1 solmu on lisätty jo johonkin komponenttiin
+                 }
+                 
              } // else
         } // while
         Komponentti();
@@ -117,16 +122,17 @@ public class Kosaraju {
         
         color[solmu]=0;                         // 0 = harmaa
    //     aika=aika+1;
- //       System.out.println("solmu: "+solmu);
+   //     System.out.println("solmu: "+solmu);
    //     alku[solmu]=aika;
        
         for (int v=0; v<verkko.length; v++){           // jokaiselle solmulle 
-           // System.out.println("v: "+v);
+        //    System.out.println("v: "+v);
             if (verkko[solmu][v]==1 && color[v]==-1){  // v e vierus[u]
+     //           System.out.println("s:"+solmu+" v: "+v);
                 SSE(verkko, v);
             } // if
         } //for
-        color[solmu]=1;                         // 1 = musta
+      //  color[solmu]=1;                         // 1 = musta
   //      aika=aika+1;
   //      loppu[solmu]=aika;
         pino.push(solmu);                       // Käsitellyt solmut pinoon
@@ -139,7 +145,7 @@ public class Kosaraju {
      */
     public static int[][] Transpoosi(int[][] verkko){
         
-   //     System.out.println("Transpoosi");        
+  //      System.out.println("Transpoosi");        
         
         int[][] transpoosi = new int[verkko.length][verkko.length];
         for (int i=0; i<verkko.length; i++){
@@ -153,6 +159,7 @@ public class Kosaraju {
     
     /**
      * - Kosaraju-algorimin aloitusmetodi
+     * @param verkko
      */
     
     public static void Kosaraju(int[][] verkko){
