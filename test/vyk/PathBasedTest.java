@@ -99,15 +99,4 @@ public class PathBasedTest {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of tulostaKomponentti method, of class PathBased.
-     */
-    @Test
-    public void testTulostaKomponentti() {
-        System.out.println("tulostaKomponentti");
-        PathBased.tulostaKomponentti();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 }

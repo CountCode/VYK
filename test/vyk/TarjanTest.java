@@ -99,15 +99,4 @@ public class TarjanTest {
         // TODO review the generated test code and remove the default call to fail.
         // fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of tulostaKomponentti method, of class Tarjan.
-     */
-    @Test
-    public void testTulostaKomponentti() {
-        System.out.println("tulostaKomponentti");
-        Tarjan.tulostaKomponentti();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 }

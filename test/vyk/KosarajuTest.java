@@ -165,29 +165,4 @@ public class KosarajuTest {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of tulostaKomponentti method, of class Kosaraju.
-     */
-    @Test
-    public void testTulostaKomponentti() {
-        System.out.println("tulostaKomponentti");
-        Kosaraju.tulostaKomponentti();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of transpoosi method, of class Kosaraju.
-     */
-    @Test
-    public void testTranspoosi() {
-        System.out.println("transpoosi");
-        int[][] verkko = null;
-        int[][] expResult = null;
-        int[][] result = Kosaraju.transpoosi(verkko);
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 }
