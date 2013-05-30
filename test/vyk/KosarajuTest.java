@@ -38,6 +38,22 @@ public class KosarajuTest {
         {0, 0, 0, 0, 0, 0, 1, 0},
         {0, 0, 1, 0, 0, 1, 0, 1},
         {0, 0, 0, 1, 0, 0, 0, 0}};      
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
     
 //    public KosarajuTest() {
 //    }
@@ -61,26 +77,26 @@ public class KosarajuTest {
     /**
      * Test of ekaAlustus method, of class Kosaraju.
      */
-//    @Test
-//    public void testEkaAlustus() {
-//        System.out.println("ekaAlustus");
-//        int[][] verkko = null;
-//        Kosaraju.ekaAlustus(verkko);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testEkaAlustus() {
+        System.out.println("ekaAlustus");
+        int[][] verkko = null;
+        Kosaraju.ekaAlustus(verkko);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
 
     /**
      * Test of tokaAlustus method, of class Kosaraju.
      */
-//    @Test
-//    public void testTokaAlustus() {
-//        System.out.println("tokaAlustus");
-//        int[][] verkko = null;
-//        Kosaraju.tokaAlustus(verkko);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testTokaAlustus() {
+        System.out.println("tokaAlustus");
+        int[][] verkko = null;
+        Kosaraju.tokaAlustus(verkko);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
 
     /**
      * Test of tulostaKomponentti method, of class Kosaraju.
@@ -96,15 +112,15 @@ public class KosarajuTest {
     /**
      * Test of sse method, of class Kosaraju.
      */
-//    @Test
-//    public void testSse() {
-//        System.out.println("sse");
-//        int[][] verkko = null;
-//        int solmu = 0;
-//        Kosaraju.sse(verkko, solmu);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testSse() {
+        System.out.println("sse");
+        int[][] verkko = null;
+        int solmu = 0;
+        Kosaraju.sse(verkko, solmu);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
 
     /**
      * Test of transpoosi method, of class Kosaraju.
@@ -141,12 +157,37 @@ public class KosarajuTest {
     /**
      * Test of kosaraju method, of class Kosaraju.
      */
-//    @Test
-//    public void testKosaraju() {
-//        System.out.println("kosaraju");
-//        int[][] verkko = null;
-//        Kosaraju.kosaraju(verkko);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testKosaraju() {
+        System.out.println("kosaraju");
+        int[][] verkko = null;
+        Kosaraju.kosaraju(verkko);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of tulostaKomponentti method, of class Kosaraju.
+     */
+    @Test
+    public void testTulostaKomponentti() {
+        System.out.println("tulostaKomponentti");
+        Kosaraju.tulostaKomponentti();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of transpoosi method, of class Kosaraju.
+     */
+    @Test
+    public void testTranspoosi() {
+        System.out.println("transpoosi");
+        int[][] verkko = null;
+        int[][] expResult = null;
+        int[][] result = Kosaraju.transpoosi(verkko);
+        assertArrayEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 }

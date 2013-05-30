@@ -101,8 +101,10 @@ public class VYK {
       * Tulostaa annetun vierusmatriisin
       * @param verkko 
       */     
-          public static void tulostaVerkko(int[][] verkko){
-        
+    public static void tulostaVerkko(int[][] verkko){
+         if (verkko==null){
+            return;
+        }       
          
          for (int i=0; i<verkko.length; i++){
              for (int j=0; j<verkko[0].length; j++){
@@ -111,29 +113,56 @@ public class VYK {
              System.out.println();
          } // for i        
      }
+    /**
+     * Vertaa algoritmien nopeutta annetulla solmujen lukumäärällä
+     * @param solmuja
+     * @param tiheys
+     */      
+    public static void vertaaAlgoritmeja(int solmuja, double tiheys){
+        long alkuAika;
+        long loppuAika;
+        
+        int[][] verkko = verkkoja(12, 0.14);     
+        
+        alkuAika=System.nanoTime();
+        Kosaraju.kosaraju(verkko);        
+        loppuAika=System.nanoTime();
+        System.out.println("Kosaraju: "+(loppuAika-alkuAika));
+ 
+        alkuAika=System.nanoTime();
+        Tarjan.tarjan(verkko);          
+        loppuAika=System.nanoTime();
+        System.out.println("Tarjan: "+(loppuAika-alkuAika));
+           
+        alkuAika=System.nanoTime();
+        PathBased.pathBased(verkko);          
+        loppuAika=System.nanoTime();
+        System.out.println("PathBased: "+(loppuAika-alkuAika));                      
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
-        int[][] verkko = verkkoja(12, 0.14);
+        vertaaAlgoritmeja(10, 0.14);
+     //   int[][] verkko = verkkoja(12, 0.14);
       //  tulostaVerkko(verkko);
         
    //     System.out.println("VYK");
     //    Kosaraju.kosaraju(esim1);    
   //      Kosaraju.kosaraju(esim2);  
     //    Kosaraju.kosaraju(esim3);
-        Kosaraju.kosaraju(verkko);        
+     //   Kosaraju.kosaraju(verkko);        
         
     //    Tarjan.tarjan(esim1);
     //    Tarjan.tarjan(esim2);
    //     Tarjan.tarjan(esim3);        
-        Tarjan.tarjan(verkko);     
+    //    Tarjan.tarjan(verkko);     
         
      //   PathBased.pathBased(esim1);
     //    PathBased.pathBased(esim2);
    //     PathBased.pathBased(esim3);        
-        PathBased.pathBased(verkko);       
+    //    PathBased.pathBased(verkko);       
     }
 }

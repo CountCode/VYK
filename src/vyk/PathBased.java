@@ -63,8 +63,10 @@ public class PathBased {
      */
     
         public static void alustus(int[][] verkko){
-        
-        System.out.println("Alustus");
+ //       System.out.println("Alustus");
+        if (verkko==null){
+            return;
+        }
 
         for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle u e V
             color[solmu]=-1;        // -1 = valkoinen
@@ -84,9 +86,12 @@ public class PathBased {
      * @param verkko
      * @param solmu 
      */    
-    public static void sse(int[][] verkko, int solmu){
-  
+    public static void sse(int[][] verkko, int solmu){  
     //    System.out.println("SSE:"+solmu+" aika:"+aika);
+        if (verkko==null){
+            return;
+        }        
+        
         int pinosta;
    
         color[solmu]=0; 
@@ -135,8 +140,11 @@ public class PathBased {
      * @param verkko 
      */
     public static void pathBased(int[][] verkko){
-
-    System.out.println("PathBased");
+//    System.out.println("PathBased");
+        if (verkko==null){
+            return;
+        }     
+        
     // Alustus
     color = new int[verkko.length];
     syvyys = new int[verkko.length];

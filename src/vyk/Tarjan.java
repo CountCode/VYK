@@ -59,9 +59,11 @@ public class Tarjan {
      * @param verkko 
      */
     
-        public static void alustus(int[][] verkko){
-        
+        public static void alustus(int[][] verkko){        
       //  System.out.println("Alustus");
+        if (verkko==null){
+            return;
+        }            
 
         for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle e V
             color[solmu]=-1;        // -1 = valkoinen
@@ -81,10 +83,12 @@ public class Tarjan {
      * @param verkko
      * @param solmu 
      */    
-    public static void sse(int[][] verkko, int solmu){
-  
+    public static void sse(int[][] verkko, int solmu){  
     //    System.out.println("SSE:"+solmu+"aika:"+aika);
-   
+        if (verkko==null){
+            return;
+        }
+        
         color[solmu]=0; 
         syvyys[solmu]=aika;                     // solmun syvyys
         alin[solmu]=aika;                       // solmun komponentin alin
@@ -131,6 +135,10 @@ public class Tarjan {
      * @param verkko
      */
     public static void tarjan(int[][] verkko){
+        
+        if (verkko==null){
+            return;
+        }        
 
     System.out.println("Tarjan");
     // Alustus

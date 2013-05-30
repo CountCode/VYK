@@ -48,7 +48,9 @@ public class Kosaraju {
     
     public static void ekaAlustus(int[][] verkko){       
     //    System.out.println("Alustus 1");
-
+        if (verkko==null){
+            return;
+        }
         for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle e V
             color[solmu]=-1;        // -1 = valkoinen, solmut ovat käymättömiä
          } // for
@@ -70,7 +72,9 @@ public class Kosaraju {
     public static void tokaAlustus(int[][] verkko){
         
        // System.out.println("Alustus 2");
-
+        if (verkko==null){
+            return;
+        }
         for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle u e V
             color[solmu]=-1;        // -1 = valkoinen, solmut ovat käymättömiä
          } // for
@@ -111,7 +115,10 @@ public class Kosaraju {
      * @param solmu  Käsiteltävä solmu
      */
     public static void sse(int[][] verkko, int solmu){        
-    //    System.out.println("SSE");              
+    //    System.out.println("SSE");   
+        if (verkko==null){
+            return;
+        }        
         color[solmu]=0;                         // 0 = harmaa, solmu käsitelyssä
        
         for (int kaari=0; kaari<verkko.length; kaari++){           // jokaiselle solmulle 
@@ -149,8 +156,10 @@ public class Kosaraju {
      */
     
     public static void kosaraju(int[][] verkko){
-  // public static void main(String[] args){ 
   //      System.out.println("Kosuraju");
+        if (verkko==null){
+            return;
+        }        
 
         pino = new LinkedList();
         komponentti = new TreeSet();
