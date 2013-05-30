@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package vyk;
 
 import org.junit.After;
@@ -6,6 +10,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+// Lisätyt
+import java.util.TreeSet;
 
 /**
  *
@@ -13,96 +19,134 @@ import static org.junit.Assert.*;
  */
 public class KosarajuTest {
     
-    public KosarajuTest() {
-    }
+      static int[][] esim1 = new int[][] {
+        {0, 0, 0, 0, 1, 0, 0, 0},
+        {1, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 0, 0, 0, 0, 1, 0},
+        {0, 0, 1, 0, 0, 0, 0, 1},
+        {1, 1, 0, 0, 0, 0, 0, 0},
+        {0, 1, 0, 0, 1, 0, 1, 0},
+        {0, 0, 0, 0, 0, 1, 0, 0},
+        {0, 0, 0, 1, 0, 0, 1, 0}};
+      
+      static int[][] esim1Transpoosi = new int[][] {
+        {0, 1, 0, 0, 1, 0, 0, 0},
+        {0, 0, 1, 0, 1, 1, 0, 0},
+        {0, 0, 0, 1, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 1},
+        {1, 0, 0, 0, 0, 1, 0, 0},
+        {0, 0, 0, 0, 0, 0, 1, 0},
+        {0, 0, 1, 0, 0, 1, 0, 1},
+        {0, 0, 0, 1, 0, 0, 0, 0}};      
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
+//    public KosarajuTest() {
+//    }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
+//    @BeforeClass
+//    public static void setUpClass() {
+//    }
+//    
+//    @AfterClass
+//    public static void tearDownClass() {
+//    }
+//    
+//    @Before
+//    public void setUp() {
+//    }
     
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
+//    @After
+//    public void tearDown() {
+//    }
 
     /**
-     * Test of Alustus1 method, of class Kosaraju.
+     * Test of ekaAlustus method, of class Kosaraju.
      */
-    @Test
-    public void testAlustus1() {
-        System.out.println("Alustus1");
-        int[][] verkko = null;
-        Kosaraju.Alustus1(verkko);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testEkaAlustus() {
+//        System.out.println("ekaAlustus");
+//        int[][] verkko = null;
+//        Kosaraju.ekaAlustus(verkko);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
     /**
-     * Test of Alustus2 method, of class Kosaraju.
+     * Test of tokaAlustus method, of class Kosaraju.
      */
-    @Test
-    public void testAlustus2() {
-        System.out.println("Alustus2");
-        int[][] verkko = null;
-        Kosaraju.Alustus2(verkko);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testTokaAlustus() {
+//        System.out.println("tokaAlustus");
+//        int[][] verkko = null;
+//        Kosaraju.tokaAlustus(verkko);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
     /**
-     * Test of Komponentti method, of class Kosaraju.
+     * Test of tulostaKomponentti method, of class Kosaraju.
      */
-    @Test
-    public void testKomponentti() {
-        System.out.println("Komponentti");
-        Kosaraju.Komponentti();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testTulostaKomponentti() {
+//        System.out.println("tulostaKomponentti");
+//        Kosaraju.tulostaKomponentti();
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
     /**
-     * Test of SSE method, of class Kosaraju.
+     * Test of sse method, of class Kosaraju.
      */
-    @Test
-    public void testSSE() {
-        System.out.println("SSE");
-        int[][] verkko = null;
-        int solmu = 0;
-        Kosaraju.SSE(verkko, solmu);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testSse() {
+//        System.out.println("sse");
+//        int[][] verkko = null;
+//        int solmu = 0;
+//        Kosaraju.sse(verkko, solmu);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
     /**
-     * Test of Transpoosi method, of class Kosaraju.
+     * Test of transpoosi method, of class Kosaraju.
      */
     @Test
-    public void testTranspoosi() {
-        System.out.println("Transpoosi");
+    public void testTranspoosiTyhjaMatriisi() {
+        System.out.println("transpoosiNull");
         int[][] verkko = null;
         int[][] expResult = null;
-        int[][] result = Kosaraju.Transpoosi(verkko);
+        int[][] result = Kosaraju.transpoosi(verkko);
         assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of Kosaraju method, of class Kosaraju.
-     */
     @Test
-    public void testKosaraju() {
-        System.out.println("Kosaraju");
-        int[][] verkko = null;        
-        Kosaraju.Kosaraju(verkko);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testTranspoosi1x1Matriisi() {
+        System.out.println("transpoosi1x1");
+        int[][] verkko = new int[1][1];
+        int[][] expResult = new int[1][1];
+        verkko[0][0]=1;
+        expResult[0][0]=1;
+        int[][] result = Kosaraju.transpoosi(verkko);
+        assertArrayEquals(expResult, result);
     }
+    
+        @Test
+    public void testTranspoosi8x8Matriisi() {
+        System.out.println("transpoosi8x8");
+        int[][] verkko = esim1;
+        int[][] expResult = esim1Transpoosi;
+        int[][] result = Kosaraju.transpoosi(verkko);
+        assertArrayEquals(expResult, result);
+    } 
+    
+    /**
+     * Test of kosaraju method, of class Kosaraju.
+     */
+//    @Test
+//    public void testKosaraju() {
+//        System.out.println("kosaraju");
+//        int[][] verkko = null;
+//        Kosaraju.kosaraju(verkko);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 }

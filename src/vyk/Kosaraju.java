@@ -9,7 +9,6 @@ import java.util.TreeSet;
  *  @version 0.4
  */
 
-
 public class Kosaraju {
     
     /**
@@ -47,17 +46,16 @@ public class Kosaraju {
      * @param verkko  Käsiteltävä verkko 
      */
     
-    public static void Alustus1(int[][] verkko){
-        
+    public static void ekaAlustus(int[][] verkko){       
     //    System.out.println("Alustus 1");
 
-        for (int u=0; u< verkko.length; u++){ // Jokaiselle solmulle u e V
-            color[u]=-1;        // -1 = valkoinen
+        for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle e V
+            color[solmu]=-1;        // -1 = valkoinen, solmut ovat käymättömiä
          } // for
         
-        for (int u=0; u<verkko.length; u++){ // Jokaiselle solmulle u e V
-            if (color[u]==-1){
-                SSE(verkko, u);
+        for (int solmu=0; solmu<verkko.length; solmu++){    // Jokaiselle solmulle e V
+            if (color[solmu]==-1){                  // jos solmussa ei olla käyty
+                sse(verkko, solmu);
             } // if
         } // for
     }
@@ -69,39 +67,36 @@ public class Kosaraju {
      * @param verkko  Käsiteltävä verkko
      */
     
-    public static void Alustus2(int[][] verkko){
+    public static void tokaAlustus(int[][] verkko){
         
        // System.out.println("Alustus 2");
 
-        for (int u=0; u< verkko.length; u++){ // Jokaiselle solmulle u e V
-            color[u]=-1;        // -1 = valkoinen
+        for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle u e V
+            color[solmu]=-1;        // -1 = valkoinen, solmut ovat käymättömiä
          } // for
         
         int solmu;
         while (!pino.isEmpty()){                // pinossa solmuja
-            solmu=(Integer)pino.pop();
-       //     System.out.println("ps:"+solmu);   
+            solmu=(Integer)pino.pop();  
              if (color[solmu]==-1){             // solmussa ei ole vielä käyty
-                    SSE(verkko, solmu);
-                    Komponentti();
+                    sse(verkko, solmu);
+                    tulostaKomponentti();
             } // if
              else {                             // solmussa on jo käyty
-           //      System.out.print(solmu+" ");
                  if (color[solmu]==0){
                      komponentti.add(solmu);
                      color[solmu]=1;            // 1 solmu on lisätty jo johonkin komponenttiin
-                 }
-                 
+                 }  // if               
              } // else
         } // while
-        Komponentti();
+        tulostaKomponentti();
     }
     
     /**
      *  Tulostaa Vahvasti yhtenäisen komponentin.
      */
     
-    public static void Komponentti(){
+    public static void tulostaKomponentti(){
         while (!komponentti.isEmpty()){
             System.out.print(komponentti.pollFirst()+" ");
         } // while
@@ -115,20 +110,15 @@ public class Kosaraju {
      * @param verkko  Käsiteltävä verkko
      * @param solmu  Käsiteltävä solmu
      */
-    public static void SSE(int[][] verkko, int solmu){
-        
-    //    System.out.println("SSE");        
-        
-        color[solmu]=0;                         // 0 = harmaa
+    public static void sse(int[][] verkko, int solmu){        
+    //    System.out.println("SSE");              
+        color[solmu]=0;                         // 0 = harmaa, solmu käsitelyssä
        
-        for (int v=0; v<verkko.length; v++){           // jokaiselle solmulle 
-        //    System.out.println("v: "+v);
-            if (verkko[solmu][v]==1 && color[v]==-1){  // v e vierus[u]
-     //           System.out.println("s:"+solmu+" v: "+v);
-                SSE(verkko, v);
+        for (int kaari=0; kaari<verkko.length; kaari++){           // jokaiselle solmulle 
+            if (verkko[solmu][kaari]==1 && color[kaari]==-1){  // käsittelemätön kaari kuuluu vierus[solmu]
+                sse(verkko, kaari);
             } // if
         } //for
-
         pino.push(solmu);                       // Käsitellyt solmut pinoon
     }
     
@@ -137,10 +127,12 @@ public class Kosaraju {
      * @param verkko  Käsiteltävä verkko
      * @return palautaa käännetyn matriisin
      */
-    public static int[][] Transpoosi(int[][] verkko){
+    public static int[][] transpoosi(int[][] verkko){
         
   //      System.out.println("Transpoosi");        
-        
+        if (verkko==null){
+            return null;
+        }
         int[][] transpoosi = new int[verkko.length][verkko.length];
         for (int i=0; i<verkko.length; i++){
             for (int j=0; j<verkko.length; j++){
@@ -156,7 +148,7 @@ public class Kosaraju {
      * @param verkko
      */
     
-    public static void Kosaraju(int[][] verkko){
+    public static void kosaraju(int[][] verkko){
   // public static void main(String[] args){ 
   //      System.out.println("Kosuraju");
 
@@ -164,8 +156,8 @@ public class Kosaraju {
         komponentti = new TreeSet();
         
         color = new int[verkko.length];
-        Alustus1(verkko); // Solmut pinoon lopun mukaan alenevassa järjestyksessä
-        Alustus2(Transpoosi(verkko));
+        ekaAlustus(verkko); // Solmut pinoon lopun mukaan alenevassa järjestyksessä
+        tokaAlustus(transpoosi(verkko));
             
     }   
 }

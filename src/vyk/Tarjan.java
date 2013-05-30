@@ -59,18 +59,18 @@ public class Tarjan {
      * @param verkko 
      */
     
-        public static void Alustus(int[][] verkko){
+        public static void alustus(int[][] verkko){
         
       //  System.out.println("Alustus");
 
-        for (int u=0; u< verkko.length; u++){ // Jokaiselle solmulle u e V
-            color[u]=-1;        // -1 = valkoinen
+        for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle e V
+            color[solmu]=-1;        // -1 = valkoinen
          } // for
         aika = 0;
         
-        for (int u=0; u<verkko.length; u++){ // Jokaiselle solmulle u e V
-            if (color[u]==-1){
-                SSE(verkko, u);
+        for (int solmu=0; solmu<verkko.length; solmu++){ // Jokaiselle solmulle u e V
+            if (color[solmu]==-1){
+                sse(verkko, solmu);
             } // if
         } // for
     }
@@ -81,7 +81,7 @@ public class Tarjan {
      * @param verkko
      * @param solmu 
      */    
-    public static void SSE(int[][] verkko, int solmu){
+    public static void sse(int[][] verkko, int solmu){
   
     //    System.out.println("SSE:"+solmu+"aika:"+aika);
    
@@ -93,7 +93,7 @@ public class Tarjan {
         for (int kaari=0;kaari<verkko.length;kaari++){      // joka kaarelle
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){ // if q is not already in T ??
                                             // add p->q to T ??
-                SSE(verkko, kaari);                 // seuraavaan solmuun
+                sse(verkko, kaari);                 // seuraavaan solmuun
                 alin[solmu]=Math.min(alin[solmu],alin[kaari]); // jos komponentista löytynyt alempi solmu
             } // if
             else if (verkko[solmu][kaari]==1 && pino.contains(kaari)){         // Jos kaari on pinossa              
@@ -104,22 +104,22 @@ public class Tarjan {
         if (alin[solmu]==syvyys[solmu]){         // jos olemme alimmassa solmussa
       //      System.out.println("Komponentti:");  // output "component:"
             boolean valmis=true;
-            int w;
+            int pinosta;
             while (valmis){                      // repeat
-                w=(Integer)pino.pop();
-                komponentti.add(w);
-                if (solmu==w){
+                pinosta=(Integer)pino.pop();
+                komponentti.add(pinosta);
+                if (solmu==pinosta){
                     valmis=false;
                 } // if
             } // while
-            Komponentti();                      // tulostetaan komponetin solmut
+            tulostaKomponentti();                      // tulostetaan komponetin solmut
         } //if               
     }  
     
      /**
      *  Tulostaa Vahvasti yhtenäisen komponentin.
      */
-    public static void Komponentti(){
+    public static void tulostaKomponentti(){
         while (!komponentti.isEmpty()){
             System.out.print(komponentti.pollFirst()+" ");
         } // while
@@ -130,7 +130,7 @@ public class Tarjan {
      * - Algoritmin käynnistysmetodi
      * @param verkko
      */
-    public static void Tarjan(int[][] verkko){
+    public static void tarjan(int[][] verkko){
 
     System.out.println("Tarjan");
     // Alustus
@@ -140,7 +140,7 @@ public class Tarjan {
     pino = new LinkedList();
     komponentti = new TreeSet();    
 
-    Alustus(verkko);        // Aloitetaan etsintä
+    alustus(verkko);        // Aloitetaan etsintä
     
     }
 }

@@ -62,18 +62,18 @@ public class PathBased {
      * @param verkko 
      */
     
-        public static void Alustus(int[][] verkko){
+        public static void alustus(int[][] verkko){
         
         System.out.println("Alustus");
 
-        for (int u=0; u< verkko.length; u++){ // Jokaiselle solmulle u e V
-            color[u]=-1;        // -1 = valkoinen
+        for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle u e V
+            color[solmu]=-1;        // -1 = valkoinen
          } // for
         aika = 0;
         
-        for (int u=0; u<verkko.length; u++){ // Jokaiselle solmulle u e V
-            if (color[u]==-1){
-                SSE(verkko, u);
+        for (int solmu=0; solmu<verkko.length; solmu++){ // Jokaiselle solmulle u e V
+            if (color[solmu]==-1){
+                sse(verkko, solmu);
             } // if
         } // for
     }
@@ -84,7 +84,7 @@ public class PathBased {
      * @param verkko
      * @param solmu 
      */    
-    public static void SSE(int[][] verkko, int solmu){
+    public static void sse(int[][] verkko, int solmu){
   
     //    System.out.println("SSE:"+solmu+" aika:"+aika);
         int pinosta;
@@ -98,7 +98,7 @@ public class PathBased {
         for (int kaari=0;kaari<verkko.length;kaari++){      // joka kaarelle
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){ // if q is not already in T ??
                                             // add p->q to T ??
-                SSE(verkko, kaari);                 // seuraavaan solmuun
+                sse(verkko, kaari);                 // seuraavaan solmuun
            //     System.out.println("SSE-:"+solmu);
             } // if
             else if (verkko[solmu][kaari]==1 && pinoS.contains(kaari)){         // Jos kaari on pinossa
@@ -115,7 +115,7 @@ public class PathBased {
             } while (solmu!=pinosta);
            // komponentti.add(pinosta); 
             pinoP.pop();
-           Komponentti();   // tulostetaan komponetin solmut
+           tulostaKomponentti();   // tulostetaan komponetin solmut
         }   
                          
     }  
@@ -123,7 +123,7 @@ public class PathBased {
      /**
      *  Tulostaa Vahvasti yhtenäisen komponentin.
      */
-    public static void Komponentti(){
+    public static void tulostaKomponentti(){
         while (!komponentti.isEmpty()){
             System.out.print(komponentti.pollFirst()+" ");
         } // while
@@ -134,7 +134,7 @@ public class PathBased {
      * - Algoritmin käynnistysmetodi
      * @param verkko 
      */
-    public static void PathBased(int[][] verkko){
+    public static void pathBased(int[][] verkko){
 
     System.out.println("PathBased");
     // Alustus
@@ -145,7 +145,7 @@ public class PathBased {
     pinoP = new LinkedList();    
     komponentti = new TreeSet();    
 
-    Alustus(verkko);        // Aloitetaan etsintä
+    alustus(verkko);        // Aloitetaan etsintä
     
     }
 }

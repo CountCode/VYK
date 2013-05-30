@@ -11,7 +11,7 @@ public class VYK {
    * Tira luentokalvot s. 499
    * Komponentit:
    * {0,1,4},{2},{3,7},{5,6}
-   * /
+   */
      static int[][] esim1 = new int[][] {
         {0, 0, 0, 0, 1, 0, 0, 0},
         {1, 0, 0, 0, 0, 0, 0, 0},
@@ -27,7 +27,7 @@ public class VYK {
     * Corman s. 615
     * Komponentit:
     * {0,1,4},{2,3},{5,6},{7}
-    * /
+    */
      static int[][] esim2 = new int[][] {
         {0, 1, 0, 0, 0, 0, 0, 0},
         {0, 0, 1, 0, 1, 0, 0, 0},
@@ -43,7 +43,7 @@ public class VYK {
     * http://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_alorithm
     * Komponentit:
     * {0,1,4},{2,3},{5,6},{7}
-    * /
+    */
      static int[][] esim3 = new int[][] {
         {0, 0, 0, 0, 1, 0, 0, 0},
         {1, 0, 0, 0, 0, 0, 0, 0},
@@ -58,7 +58,7 @@ public class VYK {
     *  Yksi lenkki
     *  Komponentit:
     *  {0,1,2,3,4,5,6,7}
-    * /
+    */
      static int[][] esim4 = new int[][] {
         {0, 1, 0, 0, 0, 0, 0, 0},
         {0, 0, 1, 0, 0, 0, 0, 0},
@@ -80,6 +80,9 @@ public class VYK {
      
      public static int[][] verkkoja(int solmuja, double tiheys){
          
+         if (solmuja==0){
+             return null;
+         }
          int[][] verkko= new int[solmuja][solmuja];
          
          for (int i=0; i<solmuja; i++){
@@ -117,21 +120,20 @@ public class VYK {
         int[][] verkko = verkkoja(12, 0.14);
       //  tulostaVerkko(verkko);
         
-      //  Kosaraju kosa = new Kosaraju();
    //     System.out.println("VYK");
-    //    Kosaraju.Kosaraju(esim1);    
-  //      Kosaraju.Kosaraju(esim2);  
-    //    Kosaraju.Kosaraju(esim3);
-     //   Kosaraju.Kosaraju(verkko);        
+    //    Kosaraju.kosaraju(esim1);    
+  //      Kosaraju.kosaraju(esim2);  
+    //    Kosaraju.kosaraju(esim3);
+        Kosaraju.kosaraju(verkko);        
         
-    //    Tarjan.Tarjan(esim1);
-    //    Tarjan.Tarjan(esim2);
-   //     Tarjan.Tarjan(esim3);        
-        Tarjan.Tarjan(verkko);     
+    //    Tarjan.tarjan(esim1);
+    //    Tarjan.tarjan(esim2);
+   //     Tarjan.tarjan(esim3);        
+        Tarjan.tarjan(verkko);     
         
-     //   PathBased.PathBased(esim1);
-    //    PathBased.PathBased(esim2);
-   //     PathBased.PathBased(esim3);        
-        PathBased.PathBased(verkko);       
+     //   PathBased.pathBased(esim1);
+    //    PathBased.pathBased(esim2);
+   //     PathBased.pathBased(esim3);        
+        PathBased.pathBased(verkko);       
     }
 }
