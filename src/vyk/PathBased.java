@@ -1,12 +1,12 @@
 package vyk;
 
-import java.util.LinkedList;
+//import java.util.LinkedList;
 import java.util.TreeSet;
 
 /**
  * PathBased-algoritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
  * @author ilkka
- * @version 0.4
+ * @version 0.42
  */
 public class PathBased {
     
@@ -21,11 +21,11 @@ public class PathBased {
     /**
      * Kerää talteen käydyt solmut
      */
-    public static LinkedList pinoS;
+    public static Pino pinoS;
     /**
      * Kerää talteen käydyt solmut
      */
-    public static LinkedList pinoP;      
+    public static Pino pinoP;      
     /**
      * Kirjaa haun syvyyden
      */
@@ -69,7 +69,7 @@ public class PathBased {
         }
 
         for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle u e V
-            color[solmu]=-1;        // -1 = valkoinen
+            color[solmu]=-1;        // -1 = solmut käsittelemättä
          } // for
         aika = 0;
         
@@ -94,7 +94,7 @@ public class PathBased {
         
         int pinosta;
    
-        color[solmu]=0; 
+        color[solmu]=0;                         // solmu käsittelyssä
         syvyys[solmu]=aika;                     // solmun syvyys
         alin[solmu]=aika;                       // solmun komponentin alin
         aika=aika+1;                            // lisää syvyyttä
@@ -102,9 +102,7 @@ public class PathBased {
         pinoP.push(solmu);                        // pinoon  P       
         for (int kaari=0;kaari<verkko.length;kaari++){      // joka kaarelle
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){ // if q is not already in T ??
-                                            // add p->q to T ??
                 sse(verkko, kaari);                 // seuraavaan solmuun
-           //     System.out.println("SSE-:"+solmu);
             } // if
             else if (verkko[solmu][kaari]==1 && pinoS.contains(kaari)){         // Jos kaari on pinossa
                 while (syvyys[(Integer)pinoP.peek()]>syvyys[kaari]){
@@ -149,8 +147,8 @@ public class PathBased {
     color = new int[verkko.length];
     syvyys = new int[verkko.length];
     alin= new int[verkko.length];
-    pinoS = new LinkedList();
-    pinoP = new LinkedList();    
+    pinoS = new Pino();
+    pinoP = new Pino();    
     komponentti = new TreeSet();    
 
     alustus(verkko);        // Aloitetaan etsintä

@@ -1,12 +1,12 @@
 package vyk;
 
-import java.util.LinkedList;
+//import java.util.LinkedList;
 import java.util.TreeSet;
 
 /**
  *  Kosarajun algoritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
  *  @author ilkka
- *  @version 0.4
+ *  @version 0.42
  */
 
 public class Kosaraju {
@@ -33,7 +33,7 @@ public class Kosaraju {
    /**
     * Kerää talteen käydyt solmut
     */
-   public static LinkedList pino;
+   public static Pino pino;
    /**
     * kerää yhteen komponentin solmut
     */
@@ -76,7 +76,7 @@ public class Kosaraju {
             return;
         }
         for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle u e V
-            color[solmu]=-1;        // -1 = valkoinen, solmut ovat käymättömiä
+            color[solmu]=-1;        // -1 = solmut ovat käsittelemättä
          } // for
         
         int solmu;
@@ -89,7 +89,7 @@ public class Kosaraju {
              else {                             // solmussa on jo käyty
                  if (color[solmu]==0){
                      komponentti.add(solmu);
-                     color[solmu]=1;            // 1 solmu on lisätty jo johonkin komponenttiin
+                     color[solmu]=1;            // 1, solmu on lisätty jo johonkin komponenttiin
                  }  // if               
              } // else
         } // while
@@ -119,7 +119,7 @@ public class Kosaraju {
         if (verkko==null){
             return;
         }        
-        color[solmu]=0;                         // 0 = harmaa, solmu käsitelyssä
+        color[solmu]=0;                         // 0 = solmu käsitelyssä
        
         for (int kaari=0; kaari<verkko.length; kaari++){           // jokaiselle solmulle 
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){  // käsittelemätön kaari kuuluu vierus[solmu]
@@ -161,12 +161,11 @@ public class Kosaraju {
             return;
         }        
 
-        pino = new LinkedList();
+        pino = new Pino();
         komponentti = new TreeSet();
-        
         color = new int[verkko.length];
+        
         ekaAlustus(verkko); // Solmut pinoon lopun mukaan alenevassa järjestyksessä
-        tokaAlustus(transpoosi(verkko));
-            
+        tokaAlustus(transpoosi(verkko));            
     }   
 }

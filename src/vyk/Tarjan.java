@@ -1,6 +1,6 @@
 package vyk;
 
-import java.util.LinkedList;
+//import java.util.LinkedList;
 import java.util.TreeSet;
 
 /**
@@ -8,7 +8,7 @@ import java.util.TreeSet;
  * - Verkon vahvasti yhtenäisten komponenttien löytämiseksi
  * 
  * @author ilkka
- * @version 0.4
+ * @version 0.42
  */
 public class Tarjan {
     /**
@@ -22,7 +22,7 @@ public class Tarjan {
     /**
      * Kerää talteen käydyt solmut
      */
-    public static LinkedList pino;
+    public static Pino pino;
     /**
      * Kirjaa haun syvyyden
      */
@@ -63,13 +63,13 @@ public class Tarjan {
       //  System.out.println("Alustus");
         if (verkko==null){
             return;
-        }            
-
-        for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle e V
-            color[solmu]=-1;        // -1 = valkoinen
-         } // for
-        aika = 0;
+        }
         
+        aika = 0;            
+                 
+        for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle e V
+            color[solmu]=-1;        // -1 = käsittelemättä
+        } // for    
         for (int solmu=0; solmu<verkko.length; solmu++){ // Jokaiselle solmulle u e V
             if (color[solmu]==-1){
                 sse(verkko, solmu);
@@ -89,7 +89,7 @@ public class Tarjan {
             return;
         }
         
-        color[solmu]=0; 
+        color[solmu]=0;                         // 0 = käsittelyssä
         syvyys[solmu]=aika;                     // solmun syvyys
         alin[solmu]=aika;                       // solmun komponentin alin
         aika=aika+1;                            // lisää syvyyttä
@@ -145,7 +145,7 @@ public class Tarjan {
     color = new int[verkko.length];
     syvyys = new int[verkko.length];
     alin= new int[verkko.length];
-    pino = new LinkedList();
+    pino = new Pino();
     komponentti = new TreeSet();    
 
     alustus(verkko);        // Aloitetaan etsintä

@@ -1,12 +1,15 @@
 package vyk;
 
 /**
- *
+ * VYK - Vahvasti Yhtenäiset Komponentit
+ * Luokka toimii verkon vahvasti yhtenäisten komponenttien etsintää
+ * suorittavien algorimien "testikeskuksena".
  * @author ilkka
- * @version 0.4
+ * @version 0.41
  */
 public class VYK {
     
+   /* TESTIMATRIISEJA */ 
    /** 
    * Tira luentokalvot s. 499
    * Komponentit:
@@ -92,7 +95,6 @@ public class VYK {
                  } else {
                      verkko[i][j]=0;
                  } // if {} else{}
-          //       System.out.println(verkko[i][j]);
              } // for j
          } // for i        
          return verkko;
