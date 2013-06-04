@@ -116,18 +116,35 @@ public class Tarjan {
                     valmis=false;
                 } // if
             } // while
-            tulostaKomponentti();                      // tulostetaan komponetin solmut
+            System.out.println(tulostaKomponentti());                      // tulostetaan komponetin solmut
         } //if               
     }  
     
      /**
      *  Tulostaa Vahvasti yhtenäisen komponentin.
      */
-    public static void tulostaKomponentti(){
+/*    public static void tulostaKomponentti(){
         while (!komponentti.isEmpty()){
             System.out.print(komponentti.pollFirst()+" ");
         } // while
         System.out.println();   
+    }    
+  */ 
+    /**
+     * Kerää vahvasti yhtenäisen komponentin solmut yhteen
+     * @return vahvasti yhtenäinen komponentti merkkijonona
+     */
+    public static String tulostaKomponentti(){
+        String komponenttiMerkkijonona = "{";
+        while (!komponentti.isEmpty()){
+            komponenttiMerkkijonona=komponenttiMerkkijonona+komponentti.pollFirst();
+            if (!komponentti.isEmpty()){
+              komponenttiMerkkijonona=komponenttiMerkkijonona+",";               
+            }
+        }      
+        komponenttiMerkkijonona=komponenttiMerkkijonona+"}"; 
+        // System.out.println(komponenttiMerkkijonona);
+        return komponenttiMerkkijonona;
     }    
     
     /**

@@ -69,12 +69,13 @@ public class Kosaraju {
      * @param verkko  Käsiteltävä verkko
      */
     
-    public static void tokaAlustus(int[][] verkko){
-        
-       // System.out.println("Alustus 2");
+    public static String tokaAlustus(int[][] verkko){
+        // System.out.println("Alustus 2");
         if (verkko==null){
-            return;
+            return "{}";
         }
+        
+        String komponentitMerkkijonona = "{";
         for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle u e V
             color[solmu]=-1;        // -1 = solmut ovat käsittelemättä
          } // for
@@ -84,7 +85,9 @@ public class Kosaraju {
             solmu=(Integer)pino.pop();  
              if (color[solmu]==-1){             // solmussa ei ole vielä käyty
                     sse(verkko, solmu);
-                    tulostaKomponentti();
+                    if (!komponentti.isEmpty()){
+                        komponentitMerkkijonona=komponentitMerkkijonona+tulostaKomponentti();
+                    }
             } // if
              else {                             // solmussa on jo käyty
                  if (color[solmu]==0){
@@ -93,18 +96,38 @@ public class Kosaraju {
                  }  // if               
              } // else
         } // while
-        tulostaKomponentti();
+        komponentitMerkkijonona=komponentitMerkkijonona+tulostaKomponentti()+"}";
+       // System.out.println(komponentitMerkkijonona);
+        return komponentitMerkkijonona;
     }
     
     /**
      *  Tulostaa Vahvasti yhtenäisen komponentin.
      */
-    
+  /*  
     public static void tulostaKomponentti(){
         while (!komponentti.isEmpty()){
             System.out.print(komponentti.pollFirst()+" ");
         } // while
         System.out.println();   
+    }
+    */
+    
+    /**
+     * Kerää vahvasti yhtenäisen komponentin solmut yhteen
+     * @return vahvasti yhtenäinen komponentti merkkijonona
+     */
+    public static String tulostaKomponentti(){
+        String komponenttiMerkkijonona = "{";
+        while (!komponentti.isEmpty()){
+            komponenttiMerkkijonona=komponenttiMerkkijonona+komponentti.pollFirst();
+            if (!komponentti.isEmpty()){
+              komponenttiMerkkijonona=komponenttiMerkkijonona+",";               
+            }
+        }      
+        komponenttiMerkkijonona=komponenttiMerkkijonona+"}"; 
+        // System.out.println(komponenttiMerkkijonona);
+        return komponenttiMerkkijonona;
     }
     
     /**
@@ -148,8 +171,7 @@ public class Kosaraju {
         } // for i
         return transpoosi;
     }
-    
-    
+        
     /**
      * - Kosaraju-algorimin aloitusmetodi
      * @param verkko
@@ -166,6 +188,6 @@ public class Kosaraju {
         color = new int[verkko.length];
         
         ekaAlustus(verkko); // Solmut pinoon lopun mukaan alenevassa järjestyksessä
-        tokaAlustus(transpoosi(verkko));            
+        System.out.println(tokaAlustus(transpoosi(verkko)));            
     }   
 }

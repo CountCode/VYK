@@ -62,11 +62,13 @@ public class PathBased {
      * @param verkko 
      */
     
-        public static void alustus(int[][] verkko){
+        public static String alustus(int[][] verkko){
  //       System.out.println("Alustus");
         if (verkko==null){
-            return;
+            return "{}";
         }
+        
+        String komponentitMerkkijonona="{";
 
         for (int solmu=0; solmu< verkko.length; solmu++){ // Jokaiselle solmulle u e V
             color[solmu]=-1;        // -1 = solmut käsittelemättä
@@ -75,9 +77,11 @@ public class PathBased {
         
         for (int solmu=0; solmu<verkko.length; solmu++){ // Jokaiselle solmulle u e V
             if (color[solmu]==-1){
-                sse(verkko, solmu);
+                komponentitMerkkijonona=komponentitMerkkijonona+sse(verkko, solmu);
+                System.out.println(komponentitMerkkijonona);
             } // if
         } // for
+        return komponentitMerkkijonona+"}";
     }
     
     /**
@@ -86,13 +90,14 @@ public class PathBased {
      * @param verkko
      * @param solmu 
      */    
-    public static void sse(int[][] verkko, int solmu){  
+    public static String sse(int[][] verkko, int solmu){  
     //    System.out.println("SSE:"+solmu+" aika:"+aika);
         if (verkko==null){
-            return;
+            return "{}";
         }        
         
         int pinosta;
+        String komponenttiMerkkijonona ="";
    
         color[solmu]=0;                         // solmu käsittelyssä
         syvyys[solmu]=aika;                     // solmun syvyys
@@ -118,19 +123,38 @@ public class PathBased {
             } while (solmu!=pinosta);
            // komponentti.add(pinosta); 
             pinoP.pop();
-           tulostaKomponentti();   // tulostetaan komponetin solmut
+           komponenttiMerkkijonona = tulostaKomponentti();
+           System.out.println(komponenttiMerkkijonona);            
         }   
-                         
+       // System.out.println(komponenttiMerkkijonona);
+       return komponenttiMerkkijonona;             
     }  
     
      /**
      *  Tulostaa Vahvasti yhtenäisen komponentin.
      */
-    public static void tulostaKomponentti(){
+/*    public static void tulostaKomponentti(){
         while (!komponentti.isEmpty()){
             System.out.print(komponentti.pollFirst()+" ");
         } // while
         System.out.println();   
+    }    
+ */   
+    /**
+     * Kerää vahvasti yhtenäisen komponentin solmut yhteen
+     * @return vahvasti yhtenäinen komponentti merkkijonona
+     */
+    public static String tulostaKomponentti(){
+        String komponenttiMerkkijonona = "{";
+        while (!komponentti.isEmpty()){
+            komponenttiMerkkijonona=komponenttiMerkkijonona+komponentti.pollFirst();
+            if (!komponentti.isEmpty()){
+              komponenttiMerkkijonona=komponenttiMerkkijonona+",";               
+            }
+        }      
+        komponenttiMerkkijonona=komponenttiMerkkijonona+"}"; 
+        // System.out.println(komponenttiMerkkijonona);
+        return komponenttiMerkkijonona;
     }    
     
     /**
@@ -151,7 +175,7 @@ public class PathBased {
     pinoP = new Pino();    
     komponentti = new HakuPuu();    
 
-    alustus(verkko);        // Aloitetaan etsintä
+    System.out.println(alustus(verkko));        // Aloitetaan etsintä
     
     }
 }
