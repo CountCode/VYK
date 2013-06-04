@@ -8,7 +8,7 @@ import java.util.TreeSet;
  * - Verkon vahvasti yhtenäisten komponenttien löytämiseksi
  * 
  * @author ilkka
- * @version 0.42
+ * @version 0.44
  */
 public class Tarjan {
     /**
@@ -34,7 +34,7 @@ public class Tarjan {
     /**
      * Kerää yhteen komponentin solmut
      */
-    public static TreeSet komponentti;
+    public static HakuPuu komponentti;
     
    /**
      * Vierusmatriisi testausta varten
@@ -146,7 +146,7 @@ public class Tarjan {
     syvyys = new int[verkko.length];
     alin= new int[verkko.length];
     pino = new Pino();
-    komponentti = new TreeSet();    
+    komponentti = new HakuPuu();    
 
     alustus(verkko);        // Aloitetaan etsintä
     

@@ -6,7 +6,7 @@ import java.util.TreeSet;
 /**
  *  Kosarajun algoritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
  *  @author ilkka
- *  @version 0.42
+ *  @version 0.44
  */
 
 public class Kosaraju {
@@ -37,7 +37,7 @@ public class Kosaraju {
    /**
     * kerää yhteen komponentin solmut
     */
-   public static TreeSet komponentti;
+   public static HakuPuu komponentti;
     
     /**
      * - Alustaa apumuuttujat verkon ensimmäistä läpikäyntiä varten
@@ -162,7 +162,7 @@ public class Kosaraju {
         }        
 
         pino = new Pino();
-        komponentti = new TreeSet();
+        komponentti = new HakuPuu();
         color = new int[verkko.length];
         
         ekaAlustus(verkko); // Solmut pinoon lopun mukaan alenevassa järjestyksessä

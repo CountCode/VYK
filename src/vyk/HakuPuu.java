@@ -5,8 +5,10 @@
 package vyk;
 
 /**
- *
+ * HakuPuu kerää solmut binääripuuhun ilman tuplikaatteja
+ * Tehty joltainosin TreeSetin korvikkeeksi
  * @author ilkka
+ * @version 0.44
  */
 public class HakuPuu {
     
@@ -25,6 +27,14 @@ public class HakuPuu {
     // aksessorit
     
     /**
+     * Palauttaa Hakupuun juuren
+     * @return 
+     */
+    public PuuSolmu getJuuri(){
+        return this.juuri;
+    }
+    
+    /**
      * Lisää solmun hakupuuhun
      * @param solmu 
      */
@@ -38,6 +48,9 @@ public class HakuPuu {
         PuuSolmu apu=etsi;
         while (etsi!=null){
             apu=etsi;
+            if (uusi.getAvain()==etsi.getAvain()){  // vain yksi kutakin
+                return;
+            }
             if (uusi.getAvain()<etsi.getAvain()){
                 etsi=etsi.getVasen();
             } else {
@@ -48,7 +61,7 @@ public class HakuPuu {
         if (uusi.getAvain()<apu.getAvain()){
             apu.setVasen(uusi);
         } else {
-            apu.setOikea(uusi);
+            apu.setOikea(uusi);       
         }
     }
     
@@ -70,6 +83,7 @@ public class HakuPuu {
             return -1;
         }
         int avain=juuri.getAvain();
+        this.poistaEka();
         
         return avain;
     }
@@ -77,11 +91,83 @@ public class HakuPuu {
     /**
      * Poistaa hakupuun ensimmäisen alkion
      */
-    public void poistaEka(int solmu){
-        if (solmu )
-    }
-
+    public void poistaEka(){
+        // Juurella ei ole lapsia
+        if (juuri.getVasen()==null && juuri.getOikea()==null){
+            juuri=null;
+            return;
+        }
+        // Juurella on yksi lapsi
+        PuuSolmu lapsi;
+        if (juuri.getVasen()==null || juuri.getOikea()==null){
+            if (juuri.getVasen()!=null){
+                lapsi = juuri.getVasen();
+            } else {
+                lapsi = juuri.getOikea();              
+            }
+            lapsi.setVanhempi(null);
+            juuri=lapsi;
+            return;
+        }
+        // Juurella on kaksi lasta
+        PuuSolmu seuraava=pienin(juuri.getOikea());
+        juuri.setAvain(seuraava.getAvain());    // korvataa poistettavan solmun avain seuraajan avaimella
+        lapsi=seuraava.getOikea();
+        PuuSolmu vanhempi = seuraava.getVanhempi();
+        if (vanhempi.getVasen()==seuraava){
+            vanhempi.setVasen(lapsi);
+        } else {
+            vanhempi.setOikea(lapsi);
+        }
+        if (lapsi!=null){
+            lapsi.setVanhempi(vanhempi);
+        }
+   }
     
+  /**
+   * Palauttaa alipuun pienimmän solmu
+   * @param solmu
+   * @return pienin solmu
+   */  
+   public PuuSolmu pienin(PuuSolmu solmu){
+       PuuSolmu kulkija = solmu;
+       while (kulkija.getVasen()!=null){
+           kulkija=kulkija.getVasen();
+       }
+       return kulkija;
+   }
+   
+     /**
+   * Palauttaa puun suurimman solmu
+   * @param solmu
+   * @return suurin solmu
+   */  
+   public PuuSolmu suurin(PuuSolmu solmu){
+       PuuSolmu kulkija = solmu;
+       while (kulkija.getOikea()!=null){
+           kulkija=kulkija.getOikea();
+       }
+       return kulkija;
+   }
+   
+   /**
+    * Palauttaa solmua seuraavan solmun
+    * @param solmu
+    * @return seuraava solmu
+    */
+   public PuuSolmu seuraavaSolmu(PuuSolmu solmu){
+       PuuSolmu kulkija = solmu;
+       if (kulkija.getOikea()!=null){
+           return pienin(kulkija.getOikea());
+       }
+       PuuSolmu apuKulkija = kulkija.getVanhempi();
+       while (apuKulkija!=null && kulkija==apuKulkija.getOikea()){
+           kulkija=apuKulkija;
+           apuKulkija=kulkija.getVanhempi();
+       }
+       return apuKulkija;
+   }
+   
     /**
      * Kiertää solmut oikeaan järjestykseen
      * @param solmu1
