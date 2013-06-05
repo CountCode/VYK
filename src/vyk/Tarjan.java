@@ -1,8 +1,5 @@
 package vyk;
 
-//import java.util.LinkedList;
-import java.util.TreeSet;
-
 /**
  *  Tarjan algoritmi 
  * - Verkon vahvasti yhtenäisten komponenttien löytämiseksi
@@ -118,6 +115,7 @@ public class Tarjan {
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){ // if q is not already in T ??
                                             // add p->q to T ??
                 sse(verkko, kaari);                 // seuraavaan solmuun
+                                                    // 3500 toimii 3600 liikaa
                 alin[solmu]=Math.min(alin[solmu],alin[kaari]); // jos komponentista löytynyt alempi solmu
             } // if
             else if (verkko[solmu][kaari]==1 && pino.contains(kaari)){         // Jos kaari on pinossa              
@@ -139,17 +137,7 @@ public class Tarjan {
             lisaaKomponentti(tulostaKomponentti());                      // tulostetaan komponetin solmut
         } //if               
     }  
-    
-     /**
-     *  Tulostaa Vahvasti yhtenäisen komponentin.
-     */
-/*    public static void tulostaKomponentti(){
-        while (!komponentti.isEmpty()){
-            System.out.print(komponentti.pollFirst()+" ");
-        } // while
-        System.out.println();   
-    }    
-  */ 
+
     /**
      * Kerää vahvasti yhtenäisen komponentin solmut yhteen
      * @return vahvasti yhtenäinen komponentti merkkijonona
@@ -171,10 +159,10 @@ public class Tarjan {
      * - Algoritmin käynnistysmetodi
      * @param verkko
      */
-    public static void tarjan(int[][] verkko){
+    public static String tarjan(int[][] verkko){
         
         if (verkko==null){
-            return;
+            return "{}";
         }        
 
     // Alustus
@@ -185,6 +173,7 @@ public class Tarjan {
     komponentti = new HakuPuu();    
 
     alustus(verkko);        // Aloitetaan etsintä
-    System.out.println(palautaVerkonKomponentit());
+    // System.out.println(palautaVerkonKomponentit());
+    return palautaVerkonKomponentit();
     }
 }

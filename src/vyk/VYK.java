@@ -124,20 +124,20 @@ public class VYK {
         long alkuAika;
         long loppuAika;
         
-        int[][] verkko = verkkoja(12, 0.14);     
+        int[][] verkko = verkkoja(solmuja, tiheys);     
         
         alkuAika=System.nanoTime();
-        Kosaraju.kosaraju(verkko);        
+        System.out.println(Kosaraju.kosaraju(verkko));        
         loppuAika=System.nanoTime();
         System.out.println("Kosaraju: "+(loppuAika-alkuAika));
  
         alkuAika=System.nanoTime();
-        Tarjan.tarjan(verkko);          
+        System.out.println(Tarjan.tarjan(verkko));          
         loppuAika=System.nanoTime();
         System.out.println("Tarjan: "+(loppuAika-alkuAika));
            
         alkuAika=System.nanoTime();
-        PathBased.pathBased(verkko);          
+        System.out.println(PathBased.pathBased(verkko));          
         loppuAika=System.nanoTime();
         System.out.println("PathBased: "+(loppuAika-alkuAika));                      
     }
@@ -147,24 +147,36 @@ public class VYK {
      */
     public static void main(String[] args) {
         
+        int solmuja;
+        double tiheys;
+       
+        if (args.length==2){
+             try {
+                solmuja = Integer.parseInt(args[0]);
+                tiheys = Double.parseDouble(args[1]);
+                System.out.println(solmuja);
+                System.out.println(tiheys);      
+            } // try
+            catch (Exception e) {
+                System.out.println("Virheelliset parametrit");
+                System.out.println("Oikeat tavat:");
+                System.out.println("java VYK");
+                System.out.println("Tai");
+                System.out.println("java VYK int double");
+                return;
+            } // catch
+            if (solmuja<0){
+                System.out.println("Solmuja pitää olla positiivinen määrä.");
+                return;
+            }
+            if (tiheys<0 || tiheys>1) {
+                System.out.println("Tiheyden on oltava nollan(0) ja yhden(1) välillä.");
+                return;
+            }
+            vertaaAlgoritmeja(solmuja, tiheys);
+            
+        } else {             
         vertaaAlgoritmeja(10, 0.14);
-     //   int[][] verkko = verkkoja(12, 0.14);
-      //  tulostaVerkko(verkko);
-        
-   //     System.out.println("VYK");
-    //    Kosaraju.kosaraju(esim1);    
-  //      Kosaraju.kosaraju(esim2);  
-    //    Kosaraju.kosaraju(esim3);
-     //   Kosaraju.kosaraju(verkko);        
-        
-    //    Tarjan.tarjan(esim1);
-    //    Tarjan.tarjan(esim2);
-   //     Tarjan.tarjan(esim3);        
-    //    Tarjan.tarjan(verkko);     
-        
-     //   PathBased.pathBased(esim1);
-    //    PathBased.pathBased(esim2);
-   //     PathBased.pathBased(esim3);        
-    //    PathBased.pathBased(verkko);       
+        }
     }
 }

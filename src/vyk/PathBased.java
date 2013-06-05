@@ -1,8 +1,5 @@
 package vyk;
 
-//import java.util.LinkedList;
-import java.util.TreeSet;
-
 /**
  * PathBased-algoritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
  * @author ilkka
@@ -150,17 +147,7 @@ public class PathBased {
       //  System.out.println("sse:"+komponenttiMerkkijonona);
        return komponenttiMerkkijonona;             
     }  
-    
-     /**
-     *  Tulostaa Vahvasti yhtenäisen komponentin.
-     */
-/*    public static void tulostaKomponentti(){
-        while (!komponentti.isEmpty()){
-            System.out.print(komponentti.pollFirst()+" ");
-        } // while
-        System.out.println();   
-    }    
- */   
+ 
     /**
      * Kerää vahvasti yhtenäisen komponentin solmut yhteen
      * @return vahvasti yhtenäinen komponentti merkkijonona
@@ -182,10 +169,10 @@ public class PathBased {
      * - Algoritmin käynnistysmetodi
      * @param verkko 
      */
-    public static void pathBased(int[][] verkko){
+    public static String pathBased(int[][] verkko){
 //    System.out.println("PathBased");
         if (verkko==null){
-            return;
+            return "{}";
         }     
         
     // Alustus
@@ -196,7 +183,7 @@ public class PathBased {
     pinoP = new Pino();    
     komponentti = new HakuPuu();    
 
-    System.out.println(alustus(verkko));        // Aloitetaan etsintä
-    
+    alustus(verkko);        // Aloitetaan etsintä
+    return palautaVerkonKomponentit();
     }
 }

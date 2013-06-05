@@ -1,8 +1,5 @@
 package vyk;
 
-//import java.util.LinkedList;
-import java.util.TreeSet;
-
 /**
  *  Kosarajun algoritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
  *  @author ilkka
@@ -38,14 +35,34 @@ public class Kosaraju {
     * kerää yhteen komponentin solmut
     */
    public static HakuPuu komponentti;
+   
+    /**
+     * Kerää verkon vahvasti yhtenäiset komponentit
+     */
+    public static String verkonKomponentit="{";
+    
+    /**
+     * Lisää vahvasti yhtenäisen komponentin
+     * @param komponentti 
+     */
+    public static void lisaaKomponentti(String komponentti){
+        verkonKomponentit=verkonKomponentit+komponentti;
+    }
+    
+    /**
+     * Palauttaa verkon vahvasti yhtenäiset komponentit
+     * @return 
+     */
+    public static String palautaVerkonKomponentit(){
+        return verkonKomponentit+"}";
+    }   
     
     /**
      * - Alustaa apumuuttujat verkon ensimmäistä läpikäyntiä varten
      * - Käynnistää läpikäynnin
      * - Valitsee uudet solmut numerojärjestyksessä
      * @param verkko  Käsiteltävä verkko 
-     */
-    
+     */    
     public static void ekaAlustus(int[][] verkko){       
     //    System.out.println("Alustus 1");
         if (verkko==null){
@@ -67,10 +84,9 @@ public class Kosaraju {
      * - Käynnistää läpikäynnin.
      * - Valitsee uudet solmut pinosta
      * @param verkko  Käsiteltävä verkko
-     */
-    
+     */   
     public static String tokaAlustus(int[][] verkko){
-        // System.out.println("Alustus 2");
+      //   System.out.println("Alustus 2");
         if (verkko==null){
             return "{}";
         }
@@ -86,7 +102,7 @@ public class Kosaraju {
              if (color[solmu]==-1){             // solmussa ei ole vielä käyty
                     sse(verkko, solmu);
                     if (!komponentti.isEmpty()){
-                        komponentitMerkkijonona=komponentitMerkkijonona+tulostaKomponentti();
+                        lisaaKomponentti(tulostaKomponentti());
                     }
             } // if
              else {                             // solmussa on jo käyty
@@ -96,22 +112,10 @@ public class Kosaraju {
                  }  // if               
              } // else
         } // while
-        komponentitMerkkijonona=komponentitMerkkijonona+tulostaKomponentti()+"}";
+        lisaaKomponentti(tulostaKomponentti());
        // System.out.println(komponentitMerkkijonona);
         return komponentitMerkkijonona;
     }
-    
-    /**
-     *  Tulostaa Vahvasti yhtenäisen komponentin.
-     */
-  /*  
-    public static void tulostaKomponentti(){
-        while (!komponentti.isEmpty()){
-            System.out.print(komponentti.pollFirst()+" ");
-        } // while
-        System.out.println();   
-    }
-    */
     
     /**
      * Kerää vahvasti yhtenäisen komponentin solmut yhteen
@@ -126,7 +130,7 @@ public class Kosaraju {
             }
         }      
         komponenttiMerkkijonona=komponenttiMerkkijonona+"}"; 
-        // System.out.println(komponenttiMerkkijonona);
+       //  System.out.println(komponenttiMerkkijonona);
         return komponenttiMerkkijonona;
     }
     
@@ -138,7 +142,7 @@ public class Kosaraju {
      * @param solmu  Käsiteltävä solmu
      */
     public static void sse(int[][] verkko, int solmu){        
-    //    System.out.println("SSE");   
+       // System.out.println("SSE");   
         if (verkko==null){
             return;
         }        
@@ -146,7 +150,7 @@ public class Kosaraju {
        
         for (int kaari=0; kaari<verkko.length; kaari++){           // jokaiselle solmulle 
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){  // käsittelemätön kaari kuuluu vierus[solmu]
-                sse(verkko, kaari);
+                sse(verkko, kaari);  // 5000 toimii 6000 solmua liikaa
             } // if
         } //for
         pino.push(solmu);                       // Käsitellyt solmut pinoon
@@ -177,10 +181,10 @@ public class Kosaraju {
      * @param verkko
      */
     
-    public static void kosaraju(int[][] verkko){
+    public static String kosaraju(int[][] verkko){
   //      System.out.println("Kosuraju");
         if (verkko==null){
-            return;
+            return "{}";
         }        
 
         pino = new Pino();
@@ -188,6 +192,7 @@ public class Kosaraju {
         color = new int[verkko.length];
         
         ekaAlustus(verkko); // Solmut pinoon lopun mukaan alenevassa järjestyksessä
-        System.out.println(tokaAlustus(transpoosi(verkko)));            
+        tokaAlustus(transpoosi(verkko));
+        return palautaVerkonKomponentit();          
     }   
 }
