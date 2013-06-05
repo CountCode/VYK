@@ -54,14 +54,33 @@ public class PathBased {
         {0, 1, 0, 0, 1, 0, 1, 0},
         {0, 0, 0, 0, 0, 1, 0, 0},
         {0, 0, 0, 1, 0, 0, 1, 0}};
+    /**
+     * Kerää verkon vahvasti yhtenäiset komponentit
+     */
+    public static String verkonKomponentit="{";
+    
+    /**
+     * Lisää vahvasti yhtenäisen komponentin
+     * @param komponentti 
+     */
+    public static void lisaaKomponentti(String komponentti){
+        verkonKomponentit=verkonKomponentit+komponentti;
+    }
+    
+    /**
+     * Palauttaa verkon vahvasti yhtenäiset komponentit
+     * @return 
+     */
+    public static String palautaVerkonKomponentit(){
+        return verkonKomponentit+"}";
+    }
    
     /**
      * - Alustaa apumuuttujat verkon ensimmäistä läpikäyntiä varten
      * - Käynnistää läpikäynnin
      * - Valitsee uudet solmut numerojärjestyksessä
      * @param verkko 
-     */
-    
+     */    
         public static String alustus(int[][] verkko){
  //       System.out.println("Alustus");
         if (verkko==null){
@@ -77,11 +96,12 @@ public class PathBased {
         
         for (int solmu=0; solmu<verkko.length; solmu++){ // Jokaiselle solmulle u e V
             if (color[solmu]==-1){
-                komponentitMerkkijonona=komponentitMerkkijonona+sse(verkko, solmu);
-                System.out.println(komponentitMerkkijonona);
+                //komponentitMerkkijonona=komponentitMerkkijonona+sse(verkko, solmu);
+                sse(verkko, solmu);
+                //System.out.println(komponentitMerkkijonona);
             } // if
         } // for
-        return komponentitMerkkijonona+"}";
+        return palautaVerkonKomponentit();
     }
     
     /**
@@ -98,13 +118,13 @@ public class PathBased {
         
         int pinosta;
         String komponenttiMerkkijonona ="";
-   
         color[solmu]=0;                         // solmu käsittelyssä
         syvyys[solmu]=aika;                     // solmun syvyys
         alin[solmu]=aika;                       // solmun komponentin alin
         aika=aika+1;                            // lisää syvyyttä
         pinoS.push(solmu);                        // pinoon C
-        pinoP.push(solmu);                        // pinoon  P       
+        pinoP.push(solmu);                        // pinoon  P   
+        
         for (int kaari=0;kaari<verkko.length;kaari++){      // joka kaarelle
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){ // if q is not already in T ??
                 sse(verkko, kaari);                 // seuraavaan solmuun
@@ -124,9 +144,10 @@ public class PathBased {
            // komponentti.add(pinosta); 
             pinoP.pop();
            komponenttiMerkkijonona = tulostaKomponentti();
-           System.out.println(komponenttiMerkkijonona);            
+         //  System.out.println("T"+komponenttiMerkkijonona);
+           lisaaKomponentti(komponenttiMerkkijonona);
         }   
-       // System.out.println(komponenttiMerkkijonona);
+      //  System.out.println("sse:"+komponenttiMerkkijonona);
        return komponenttiMerkkijonona;             
     }  
     

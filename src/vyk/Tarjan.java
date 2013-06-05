@@ -51,14 +51,34 @@ public class Tarjan {
         {0, 1, 0, 0, 1, 0, 1, 0},
         {0, 0, 0, 0, 0, 1, 0, 0},
         {0, 0, 0, 1, 0, 0, 1, 0}};
-   
+ 
+    /**
+     * Kerää verkon vahvasti yhtenäiset komponentit
+     */
+    public static String verkonKomponentit="{";
+    
+    /**
+     * Lisää vahvasti yhtenäisen komponentin
+     * @param komponentti 
+     */
+    public static void lisaaKomponentti(String komponentti){
+        verkonKomponentit=verkonKomponentit+komponentti;
+    }
+    
+    /**
+     * Palauttaa verkon vahvasti yhtenäiset komponentit
+     * @return 
+     */
+    public static String palautaVerkonKomponentit(){
+        return verkonKomponentit+"}";
+    }
+    
     /**
      * - Alustaa apumuuttujat verkon ensimmäistä läpikäyntiä varten
      * - Käynnistää läpikäynnin
      * - Valitsee uudet solmut numerojärjestyksessä
      * @param verkko 
-     */
-    
+     */    
         public static void alustus(int[][] verkko){        
       //  System.out.println("Alustus");
         if (verkko==null){
@@ -116,7 +136,7 @@ public class Tarjan {
                     valmis=false;
                 } // if
             } // while
-            System.out.println(tulostaKomponentti());                      // tulostetaan komponetin solmut
+            lisaaKomponentti(tulostaKomponentti());                      // tulostetaan komponetin solmut
         } //if               
     }  
     
@@ -157,7 +177,6 @@ public class Tarjan {
             return;
         }        
 
-    System.out.println("Tarjan");
     // Alustus
     color = new int[verkko.length];
     syvyys = new int[verkko.length];
@@ -166,6 +185,6 @@ public class Tarjan {
     komponentti = new HakuPuu();    
 
     alustus(verkko);        // Aloitetaan etsintä
-    
+    System.out.println(palautaVerkonKomponentit());
     }
 }
