@@ -125,19 +125,23 @@ public class VYK {
         long loppuAika;
         
         int[][] verkko = verkkoja(solmuja, tiheys);     
+        System.out.println("Solmuja: "+solmuja+" Tiheys: "+tiheys);
         
         alkuAika=System.nanoTime();
-        System.out.println(Kosaraju.kosaraju(verkko));        
+        Kosaraju.kosaraju(verkko);
+      //  System.out.println(Kosaraju.kosaraju(verkko));        
         loppuAika=System.nanoTime();
         System.out.println("Kosaraju: "+(loppuAika-alkuAika));
  
         alkuAika=System.nanoTime();
-        System.out.println(Tarjan.tarjan(verkko));          
+        Tarjan.tarjan(verkko);
+      //  System.out.println(Tarjan.tarjan(verkko));          
         loppuAika=System.nanoTime();
         System.out.println("Tarjan: "+(loppuAika-alkuAika));
            
         alkuAika=System.nanoTime();
-        System.out.println(PathBased.pathBased(verkko));          
+        PathBased.pathBased(verkko);
+       // System.out.println(PathBased.pathBased(verkko));          
         loppuAika=System.nanoTime();
         System.out.println("PathBased: "+(loppuAika-alkuAika));                      
     }
@@ -175,8 +179,15 @@ public class VYK {
             }
             vertaaAlgoritmeja(solmuja, tiheys);
             
-        } else {             
-        vertaaAlgoritmeja(10, 0.14);
+        } else {      
+        vertaaAlgoritmeja(1, 0.1);           
+        vertaaAlgoritmeja(1, 0.1);
+        vertaaAlgoritmeja(5, 0.1);
+        vertaaAlgoritmeja(10, 0.1);
+        vertaaAlgoritmeja(50, 0.1);
+        vertaaAlgoritmeja(100, 0.1);
+        vertaaAlgoritmeja(500, 0.1);
+        vertaaAlgoritmeja(1000, 0.1);        
         }
     }
 }
