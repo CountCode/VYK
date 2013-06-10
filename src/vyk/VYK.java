@@ -164,9 +164,9 @@ public class VYK {
             catch (Exception e) {
                 System.out.println("Virheelliset parametrit");
                 System.out.println("Oikeat tavat:");
-                System.out.println("java VYK");
-                System.out.println("Tai");
-                System.out.println("java VYK int double");
+                System.out.println("Joko ilman parametreja");
+                System.out.println("Tai sitten");
+                System.out.println("int double");
                 return;
             } // catch
             if (solmuja<0){
@@ -187,7 +187,11 @@ public class VYK {
         vertaaAlgoritmeja(50, 0.1);
         vertaaAlgoritmeja(100, 0.1);
         vertaaAlgoritmeja(500, 0.1);
-        vertaaAlgoritmeja(1000, 0.1);        
+        vertaaAlgoritmeja(1000, 0.1);   
+            
+//          System.out.println(PathBased.pathBased(esim1));           
+//         System.out.println(PathBased.pathBased(esim2));           
+//         System.out.println(PathBased.pathBased(esim2));             
         }
     }
 }

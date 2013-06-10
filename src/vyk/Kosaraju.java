@@ -39,7 +39,7 @@ public class Kosaraju {
     /**
      * Kerää verkon vahvasti yhtenäiset komponentit
      */
-    public static String verkonKomponentit="{";
+    public static String verkonKomponentit;
     
     /**
      * Lisää vahvasti yhtenäisen komponentin
@@ -190,6 +190,7 @@ public class Kosaraju {
         pino = new Pino();
         komponentti = new HakuPuu();
         color = new int[verkko.length];
+        verkonKomponentit="{";
         
         ekaAlustus(verkko); // Solmut pinoon lopun mukaan alenevassa järjestyksessä
         tokaAlustus(transpoosi(verkko));

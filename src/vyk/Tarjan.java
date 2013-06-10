@@ -52,7 +52,7 @@ public class Tarjan {
     /**
      * Kerää verkon vahvasti yhtenäiset komponentit
      */
-    public static String verkonKomponentit="{";
+    public static String verkonKomponentit;
     
     /**
      * Lisää vahvasti yhtenäisen komponentin
@@ -171,6 +171,7 @@ public class Tarjan {
     alin= new int[verkko.length];
     pino = new Pino();
     komponentti = new HakuPuu();    
+    verkonKomponentit="{";
 
     alustus(verkko);        // Aloitetaan etsintä
     // System.out.println(palautaVerkonKomponentit());

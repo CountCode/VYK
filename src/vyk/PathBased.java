@@ -54,7 +54,7 @@ public class PathBased {
     /**
      * Kerää verkon vahvasti yhtenäiset komponentit
      */
-    public static String verkonKomponentit="{";
+    public static String verkonKomponentit;
     
     /**
      * Lisää vahvasti yhtenäisen komponentin
@@ -182,7 +182,8 @@ public class PathBased {
     pinoS = new Pino();
     pinoP = new Pino();    
     komponentti = new HakuPuu();    
-
+    verkonKomponentit="{";
+    
     alustus(verkko);        // Aloitetaan etsintä
     return palautaVerkonKomponentit();
     }
