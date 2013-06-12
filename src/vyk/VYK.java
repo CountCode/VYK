@@ -131,19 +131,19 @@ public class VYK {
         Kosaraju.kosaraju(verkko);
       //  System.out.println(Kosaraju.kosaraju(verkko));        
         loppuAika=System.nanoTime();
-        System.out.println("Kosaraju: "+(loppuAika-alkuAika));
+        System.out.println("Kosaraju: "+(loppuAika-alkuAika)/1000+" ms");
  
         alkuAika=System.nanoTime();
         Tarjan.tarjan(verkko);
       //  System.out.println(Tarjan.tarjan(verkko));          
         loppuAika=System.nanoTime();
-        System.out.println("Tarjan: "+(loppuAika-alkuAika));
+        System.out.println("Tarjan: "+(loppuAika-alkuAika)/1000+" ms");
            
         alkuAika=System.nanoTime();
         PathBased.pathBased(verkko);
        // System.out.println(PathBased.pathBased(verkko));          
         loppuAika=System.nanoTime();
-        System.out.println("PathBased: "+(loppuAika-alkuAika));                      
+        System.out.println("PathBased: "+(loppuAika-alkuAika)/1000+" ms");                      
     }
 
     /**
@@ -182,12 +182,17 @@ public class VYK {
         } else {      
         vertaaAlgoritmeja(1, 0.1);           
         vertaaAlgoritmeja(1, 0.1);
-        vertaaAlgoritmeja(5, 0.1);
+        vertaaAlgoritmeja(2, 0.1);
+        vertaaAlgoritmeja(5, 0.1);        
         vertaaAlgoritmeja(10, 0.1);
+        vertaaAlgoritmeja(20, 0.1);        
         vertaaAlgoritmeja(50, 0.1);
         vertaaAlgoritmeja(100, 0.1);
+        vertaaAlgoritmeja(200, 0.1);        
         vertaaAlgoritmeja(500, 0.1);
-        vertaaAlgoritmeja(1000, 0.1);   
+        vertaaAlgoritmeja(1000, 0.1); 
+        vertaaAlgoritmeja(2000, 0.1);        
+        vertaaAlgoritmeja(5000, 0.1);    
             
 //          System.out.println(PathBased.pathBased(esim1));           
 //         System.out.println(PathBased.pathBased(esim2));           
