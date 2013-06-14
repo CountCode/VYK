@@ -1,9 +1,14 @@
 package vyk;
 
 /**
- *  Kosarajun algoritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
+ *  Kosarajun algoritmi 
+ * - verkon vahvasti yhtenäisten komponenttien löytämiseksi
+ * - Suorittaa syvyysuuntaisen läpikäynnin
+ * - lisää solmut jälkijärjestyksessä pinoon
+ * - transpoosi eli kääntää verkon kaaren vastakkaiseksi
+ * - suorittaa syvyyssuuntaisen läpikäynnin transpoosiverkolle
  *  @author ilkka
- *  @version 0.44
+ *  @version 1.0
  */
 
 public class Kosaraju {
@@ -35,7 +40,7 @@ public class Kosaraju {
     * kerää yhteen komponentin solmut
     */
    public static HakuPuu komponentti;
-   
+
     /**
      * Kerää verkon vahvasti yhtenäiset komponentit
      */
@@ -141,7 +146,8 @@ public class Kosaraju {
      * @param verkko  Käsiteltävä verkko
      * @param solmu  Käsiteltävä solmu
      */
-    public static void sse(int[][] verkko, int solmu){        
+    //public static void sse(int[][] verkko, int solmu){   
+    public static void sse(int[][] verkko, int solmu){
        // System.out.println("SSE");   
         if (verkko==null){
             return;
@@ -150,7 +156,11 @@ public class Kosaraju {
        
         for (int kaari=0; kaari<verkko.length; kaari++){           // jokaiselle solmulle 
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){  // käsittelemätön kaari kuuluu vierus[solmu]
-                sse(verkko, kaari);  // 5000 toimii 6000 solmua liikaa
+                try {
+                    sse(verkko, kaari);  // 5000 solmulla rekursiopino ylittyy
+                } catch (StackOverflowError e) {
+                    System.out.println("VIRHE: Rekursiopino on vuotanut yli. Kokeile Javan -Xss parametria.");
+                }
             } // if
         } //for
         pino.push(solmu);                       // Käsitellyt solmut pinoon
@@ -182,7 +192,7 @@ public class Kosaraju {
      */
     
     public static String kosaraju(int[][] verkko){
-  //      System.out.println("Kosuraju");
+  //      System.out.println("Kosuraju");      
         if (verkko==null){
             return "{}";
         }        

@@ -5,7 +5,7 @@ package vyk;
  * Luokka toimii verkon vahvasti yhtenäisten komponenttien etsintää
  * suorittavien algorimien "testikeskuksena".
  * @author ilkka
- * @version 0.41
+ * @version 1.0
  */
 public class VYK {
     
@@ -131,19 +131,19 @@ public class VYK {
         Kosaraju.kosaraju(verkko);
       //  System.out.println(Kosaraju.kosaraju(verkko));        
         loppuAika=System.nanoTime();
-        System.out.println("Kosaraju: "+(loppuAika-alkuAika)/1000+" ms");
+        System.out.println("Kosaraju: "+(loppuAika-alkuAika)/1000+" us");
  
         alkuAika=System.nanoTime();
         Tarjan.tarjan(verkko);
       //  System.out.println(Tarjan.tarjan(verkko));          
         loppuAika=System.nanoTime();
-        System.out.println("Tarjan: "+(loppuAika-alkuAika)/1000+" ms");
+        System.out.println("Tarjan: "+(loppuAika-alkuAika)/1000+" us");
            
         alkuAika=System.nanoTime();
         PathBased.pathBased(verkko);
        // System.out.println(PathBased.pathBased(verkko));          
         loppuAika=System.nanoTime();
-        System.out.println("PathBased: "+(loppuAika-alkuAika)/1000+" ms");                      
+        System.out.println("PathBased: "+(loppuAika-alkuAika)/1000+" us");                      
     }
 
     /**
@@ -180,19 +180,19 @@ public class VYK {
             vertaaAlgoritmeja(solmuja, tiheys);
             
         } else {      
-        vertaaAlgoritmeja(1, 0.1);           
-        vertaaAlgoritmeja(1, 0.1);
-        vertaaAlgoritmeja(2, 0.1);
-        vertaaAlgoritmeja(5, 0.1);        
-        vertaaAlgoritmeja(10, 0.1);
-        vertaaAlgoritmeja(20, 0.1);        
-        vertaaAlgoritmeja(50, 0.1);
-        vertaaAlgoritmeja(100, 0.1);
-        vertaaAlgoritmeja(200, 0.1);        
-        vertaaAlgoritmeja(500, 0.1);
-        vertaaAlgoritmeja(1000, 0.1); 
-        vertaaAlgoritmeja(2000, 0.1);        
-        vertaaAlgoritmeja(5000, 0.1);    
+        vertaaAlgoritmeja(1, 0.2);           
+        vertaaAlgoritmeja(1, 0.2);
+        vertaaAlgoritmeja(2, 0.2);
+        vertaaAlgoritmeja(5, 0.2);        
+        vertaaAlgoritmeja(10, 0.2);
+        vertaaAlgoritmeja(20, 0.2);        
+        vertaaAlgoritmeja(50, 0.2);
+        vertaaAlgoritmeja(100, 0.2);
+        vertaaAlgoritmeja(200, 0.2);        
+        vertaaAlgoritmeja(500, 0.2);
+        vertaaAlgoritmeja(1000, 0.2); 
+        vertaaAlgoritmeja(2000, 0.2);        
+        vertaaAlgoritmeja(5000, 0.2);    
             
 //          System.out.println(PathBased.pathBased(esim1));           
 //         System.out.println(PathBased.pathBased(esim2));           

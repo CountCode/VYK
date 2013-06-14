@@ -7,7 +7,7 @@ package vyk;
 /**
  * Linkitetyn listan solmu
  * @author ilkka
- * @versiopn 0.41
+ * @versiopn 1.0
  */
 public class Solmu {
     

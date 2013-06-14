@@ -8,7 +8,7 @@ package vyk;
  * HakuPuu kerää solmut binääripuuhun ilman tuplikaatteja
  * Tehty joltainosin TreeSetin korvikkeeksi
  * @author ilkka
- * @version 0.44
+ * @version 1.0
  */
 public class HakuPuu {
     
@@ -87,9 +87,10 @@ public class HakuPuu {
         
         return avain;
     }
-    
+     
     /**
-     * Poistaa hakupuun ensimmäisen alkion
+     * Poistaa hakupuun ensimmäisen alkion      
+     * Defragmentoitu
      */
     public void poistaEka(){
         // Juurella ei ole lapsia
@@ -98,18 +99,19 @@ public class HakuPuu {
             return;
         }
         // Juurella on yksi lapsi
-        PuuSolmu lapsi;
-        if (juuri.getVasen()==null || juuri.getOikea()==null){
-            if (juuri.getVasen()!=null){
-                lapsi = juuri.getVasen();
-            } else {
-                lapsi = juuri.getOikea();              
-            }
-            lapsi.setVanhempi(null);
-            juuri=lapsi;
+        if (juuri.getVasen()==null || juuri.getOikea()==null){        
+            PoistaEkaYksiLapsi();
             return;
         }
         // Juurella on kaksi lasta
+        PoistaEkaKaksiLasta();
+    }
+    
+    /**
+     * Poistaa ekan, jos juurella kaksi lasta
+     */
+    public void PoistaEkaKaksiLasta(){
+        PuuSolmu lapsi;        
         PuuSolmu seuraava=pienin(juuri.getOikea());
         juuri.setAvain(seuraava.getAvain());    // korvataa poistettavan solmun avain seuraajan avaimella
         lapsi=seuraava.getOikea();
@@ -122,6 +124,19 @@ public class HakuPuu {
         if (lapsi!=null){
             lapsi.setVanhempi(vanhempi);
         }
+   }
+   /**
+    * Poistaa hakupuun ensimmäisen alkion, jos juurella on yksi lapsi
+    */    
+   public void PoistaEkaYksiLapsi(){
+        PuuSolmu lapsi;
+            if (juuri.getVasen()!=null){
+                lapsi = juuri.getVasen();
+            } else {
+                lapsi = juuri.getOikea();              
+            }
+            lapsi.setVanhempi(null);
+            juuri=lapsi;       
    }
     
   /**

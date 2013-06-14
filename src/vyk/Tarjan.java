@@ -3,9 +3,13 @@ package vyk;
 /**
  *  Tarjan algoritmi 
  * - Verkon vahvasti yhtenäisten komponenttien löytämiseksi
+ * - suorittaa verko syvyyssuuntaista läpikäyntiä  
+ * - laittaa solmut pinoon esijärjestyksessä
+ * - alipuusta palattessa tarkistaa mitkä solmut muodostavat komponentin, 
+ *  sen perusteella mihin solmuihin niillä on yhteys.
  * 
  * @author ilkka
- * @version 0.44
+ * @version 1.0
  */
 public class Tarjan {
     /**
@@ -114,8 +118,13 @@ public class Tarjan {
         for (int kaari=0;kaari<verkko.length;kaari++){      // joka kaarelle
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){ // if q is not already in T ??
                                             // add p->q to T ??
-                sse(verkko, kaari);                 // seuraavaan solmuun
-                                                    // 3500 toimii 3600 liikaa
+              //  sse(verkko, kaari);                 // seuraavaan solmuun
+                try {
+                    sse(verkko, kaari);  // 3000 solmulla rekursiopino ylittyy
+                } catch (StackOverflowError e) {
+                    System.out.println("VIRHE: Rekursiopino on vuotanut yli. Kokeile Javan -Xss parametria.");
+                }                
+                                                    
                 alin[solmu]=Math.min(alin[solmu],alin[kaari]); // jos komponentista löytynyt alempi solmu
             } // if
             else if (verkko[solmu][kaari]==1 && pino.contains(kaari)){         // Jos kaari on pinossa              

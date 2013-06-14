@@ -7,7 +7,7 @@ package vyk;
 /**
  * Pino - Linkitetty lista 
  * @author ilkka
- * @version 0.41
+ * @version 1.0
  */
 public class Pino {
     

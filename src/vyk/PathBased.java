@@ -1,9 +1,14 @@
 package vyk;
 
 /**
- * PathBased-algoritmi verkon vahvasti yhtenäisten komponenttien löytämiseksi
+ * PathBased-algoritmi 
+ * - verkon vahvasti yhtenäisten komponenttien löytämiseksi
+ * - suorittaa verko syvyyssuuntaista läpikäyntiä  
+ * - laittaa solmut pinoon esijärjestyksessä
+ * - alipuusta palattessa tarkistaa mitkä solmut muodostavat komponentin, 
+ *  sen perusteella mihin solmuihin niillä on yhteys.
  * @author ilkka
- * @version 0.44
+ * @version 1.0
  */
 public class PathBased {
     
@@ -124,7 +129,12 @@ public class PathBased {
         
         for (int kaari=0;kaari<verkko.length;kaari++){      // joka kaarelle
             if (verkko[solmu][kaari]==1 && color[kaari]==-1){ // if q is not already in T ??
-                sse(verkko, kaari);                 // seuraavaan solmuun
+              //  sse(verkko, kaari);                 // seuraavaan solmuun
+                try {
+                    sse(verkko, kaari);  // 5000 solmulla rekursiopino ylittyy
+                } catch (StackOverflowError e) {
+                    System.out.println("VIRHE: Rekursiopino on vuotanut yli. Kokeile Javan -Xss parametria.");
+                }                
             } // if
             else if (verkko[solmu][kaari]==1 && pinoS.contains(kaari)){         // Jos kaari on pinossa
                 while (syvyys[(Integer)pinoP.peek()]>syvyys[kaari]){

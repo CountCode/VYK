@@ -7,7 +7,7 @@ package vyk;
 /**
  * Puunsolmut hakupuuta varten
  * @author ilkka
- * @version 0.41
+ * @version 1.0
  */
 public class PuuSolmu {
     
