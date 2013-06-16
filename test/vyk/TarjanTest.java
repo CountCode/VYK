@@ -4,6 +4,8 @@
  */
 package vyk;
 
+import algoritmit.Tarjan;
+import tietorakenteet.HakuPuu;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

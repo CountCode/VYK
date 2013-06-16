@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package vyk;
+package tietorakenteet;
 
 /**
  * Puunsolmut hakupuuta varten
@@ -12,6 +12,7 @@ package vyk;
 public class PuuSolmu {
     
     private int avain;
+//    private int korkeus;        // Tasapainottamista varten
     private PuuSolmu vasen;
     private PuuSolmu oikea;
     private PuuSolmu vanhempi;
@@ -88,6 +89,24 @@ public class PuuSolmu {
      */
     public PuuSolmu getVanhempi(){
         return this.vanhempi;
-    }    
+    }
+    
+    // Tasapainottamista varten
+//    /**
+//     * Asettaa alipuun korkeuden
+//     * @param korkeus 
+//     */
+//    public void setKorkeus(int korkeus){
+//        this.korkeus=korkeus;
+//    }
+//   
+//    /**
+//     * Hakee alipuun korkeuden
+//     * @return 
+//     */
+//    public int getKorkeus(){
+//        return this.korkeus;
+//    }
+    
     
 }

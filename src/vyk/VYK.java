@@ -1,5 +1,9 @@
 package vyk;
 
+import algoritmit.Tarjan;
+import algoritmit.PathBased;
+import algoritmit.Kosaraju;
+
 /**
  * VYK - Vahvasti Yhtenäiset Komponentit
  * Luokka toimii verkon vahvasti yhtenäisten komponenttien etsintää
@@ -158,8 +162,8 @@ public class VYK {
              try {
                 solmuja = Integer.parseInt(args[0]);
                 tiheys = Double.parseDouble(args[1]);
-                System.out.println(solmuja);
-                System.out.println(tiheys);      
+              //  System.out.println(solmuja);
+              //  System.out.println(tiheys);      
             } // try
             catch (Exception e) {
                 System.out.println("Virheelliset parametrit");

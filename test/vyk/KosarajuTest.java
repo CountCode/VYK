@@ -1,5 +1,7 @@
 package vyk;
 
+import algoritmit.Kosaraju;
+import tietorakenteet.HakuPuu;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

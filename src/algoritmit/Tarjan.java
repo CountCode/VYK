@@ -1,4 +1,7 @@
-package vyk;
+package algoritmit;
+
+import tietorakenteet.HakuPuu;
+import tietorakenteet.Pino;
 
 /**
  *  Tarjan algoritmi 
@@ -7,6 +10,9 @@ package vyk;
  * - laittaa solmut pinoon esijärjestyksessä
  * - alipuusta palattessa tarkistaa mitkä solmut muodostavat komponentin, 
  *  sen perusteella mihin solmuihin niillä on yhteys.
+ * 
+ * - Aikavaativuus O(n^2) Tosin tällä hetkellä lähempänä 0(n^3)
+ * - Tilavaativuus O(n)
  * 
  * @author ilkka
  * @version 1.0

@@ -1,4 +1,8 @@
-package vyk;
+package algoritmit;
+
+import tietorakenteet.HakuPuu;
+import tietorakenteet.Pino;
+
 
 /**
  *  Kosarajun algoritmi 
@@ -7,6 +11,10 @@ package vyk;
  * - lisää solmut jälkijärjestyksessä pinoon
  * - transpoosi eli kääntää verkon kaaren vastakkaiseksi
  * - suorittaa syvyyssuuntaisen läpikäynnin transpoosiverkolle
+ * 
+ * - Aikavaativuus O(n^2)
+ * - Tilavaativuus O(n)
+ * 
  *  @author ilkka
  *  @version 1.0
  */

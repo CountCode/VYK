@@ -44,34 +44,18 @@ public void cleanUpStreams() {
     System.setOut(null);
     System.setErr(null);
 }    
-//    
-//    @BeforeClass
-//    public static void setUpClass() {
-//    }
-//    
-//    @AfterClass
-//    public static void tearDownClass() {
-//    }
-//    
-//    @Before
-//    public void setUp() {
-//    }
-//    
-//    @After
-//    public void tearDown() {
-//    }
-//
+
     /**
      * Test of main method, of class VYK.
      */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        VYK.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        // fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testMain() {
+//        System.out.println("main");
+//        String[] args = null;
+//        VYK.main(args);
+//        // TODO review the generated test code and remove the default call to fail.
+//        // fail("The test case is a prototype.");
+//    }
 //
 //    /**
 //     * Test of verkkoja method, of class VYK.
@@ -144,17 +128,4 @@ public void cleanUpStreams() {
         // TODO review the generated test code and remove the default call to fail.
         // fail("The test case is a prototype.");
     }    
-
-//    /**
-//     * Test of vertaaAlgoritmeja method, of class VYK.
-//     */
-//    @Test
-//    public void testVertaaAlgoritmeja() {
-//        System.out.println("vertaaAlgoritmeja");
-//        int solmuja = 0;
-//        double tiheys = 0.0;
-//        VYK.vertaaAlgoritmeja(solmuja, tiheys);
-//        // TODO review the generated test code and remove the default call to fail.
-//        //fail("The test case is a prototype.");
-//    }
 }
